@@ -176,8 +176,8 @@
                                      <li><a href="#">المطورين</a>
                                         <ul>
                                             <li><a href="single-property-1.html"> إضافة </a></li>
-                                            <li><a href="single-property-2.html">Single Property 2</a></li>
-                                            <li><a href="single-property-3.html">Single Property 3</a></li>
+                                            <li><a href="">  اضافة مشروع </a></li>
+                                            <li><a href="{{ route('projects.index') }}">  fg 3</a></li>
                                             <li><a href="single-property-4.html">Single Property 4</a></li>
                                             <li><a href="single-property-5.html">Single Property 5</a></li>
                                             <li><a href="single-property-6.html">Single Property 6</a></li>

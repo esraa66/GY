@@ -19,14 +19,12 @@ class Locale
      */
     public function __construct()
     {
-        $this->locale = 'ar';
-
-        // if (\Session('locale') != '') {
-        //     App::setLocale(\Session('locale'));
-        // } else {
-        //     \Session(['locale' => 'en']);
-        //     App::setLocale('en');
-        //     $this->locale = \Session('locale');
-        // }
+        if (\Session('locale') != '') {
+            App::setLocale(\Session('locale'));
+        } else {
+            \Session(['locale' => 'en']);
+            App::setLocale('en');
+            $this->locale = \Session('locale');
+        }
     }
 }

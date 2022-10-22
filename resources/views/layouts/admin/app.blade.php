@@ -342,11 +342,11 @@
                                 </div>
                             </div>
                         </div> --}}
-                      
+
                         <!-- START FOOTER -->
 
                         @yield('content')
-                     
+
                     </div>
                 </div>
             </div>
@@ -373,6 +373,9 @@
 
     </div>
     <!-- Wrapper / End -->
+    @yield('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

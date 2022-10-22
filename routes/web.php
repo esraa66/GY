@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,3 +26,8 @@ Route::get('/test', function () {
     return view('test');
 });
 Route::post('/post', [App\Http\Controllers\HomeController::class, 'storTest'])->name('teststore');
+
+Route::get('/locale/{lang}', function ($lang) {
+    \Session(['locale' => $lang]);
+    return back();
+})->name('set.localization');
