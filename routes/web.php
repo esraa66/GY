@@ -1,5 +1,7 @@
 <?php
 
+use App\Localization\Locale;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +31,8 @@ Route::post('/post', [App\Http\Controllers\HomeController::class, 'storTest'])->
 
 Route::get('/locale/{lang}', function ($lang) {
     \Session(['locale' => $lang]);
+    // App::setLocale($lang);
+    // return getLang();
+    // dd(App::getLocale($lang));
     return back();
 })->name('set.localization');

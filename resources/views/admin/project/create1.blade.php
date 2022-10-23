@@ -399,7 +399,6 @@
 											<option value="Firefox">
 												Firefox
 											</option>
-
 										</select>
 									</div>
 
@@ -507,7 +506,7 @@
 										<p class="mg-b-10">  type </p><select class="form-control select2">
 											<option label=""> choce type </option>
                                             @foreach (App\Models\Type::all() as $t )
-                                              <option value="{{$t->id}}">{{ evaluate($t)['type'] }}</option>  
+                                              <option value="{{$t->id}}">{{ evaluate($t)['type'] }}</option>
                                             @endforeach
 										</select>
 								</div>

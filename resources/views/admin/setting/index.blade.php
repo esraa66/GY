@@ -13,7 +13,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto"> Type Page </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">
+                <h4 class="content-title mb-0 my-auto">  الاعدادت </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">
                     </span>
             </div>
         </div>
@@ -23,46 +23,117 @@
 @endsection
 @section('content')
     <!-- row -->
-    <div id='types'>
+        <div id='blogId'>
         <div>
+
+            <!-- row -->
             <div class="row">
                 <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
                     <!--div-->
-                    <div class="card">
-                        <form class="needs-validation was-validated" id="createType">
-                        <div class="card-body">
-                            <div class="main-content-label mg-b-5">
-                                إنشاء حالة جديده
-                            </div>
-                            <div class="row ">
-                                <div class="col-lg-4">
-                                    <label class="form-label">app name </label>
-                                    <input  required="" class="form-control"  v-model='name_ar' name="name_ar" placeholder="Input box" type="text">
+                    <form id='newblog'>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="main-content-label mg-b-5">
+                                      تعديل المعلومات
                                 </div>
-                                <div class="col-lg-4 mg-t-10 mg-lg-t-0">
-                                    <label class="form-label">  </label>
-                                    <input required="" class="form-control" v-model='name' name="name" placeholder="Input box " type="text">
-                                </div>
-                                <div class="col-lg-4 mg-t-10 mg-lg-t-0">
-                                    <label class="form-label">  </label>
-                                    <input required="" class="form-control"  v-model='name_fr' name="name_fr" placeholder="Input box " type="text">
-                                </div>
-                            </div>
-                            <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">Submit</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-xl-12">
-                    <div class="card">
+                                <div class="row row-sm">
+                                    <div class="col-lg-4">
+                                        <label class="form-label">title_(en) </label>
+                                        <input required="" class="form-control" name="title" placeholder="Input box"
+                                            type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">title_(ar)</label>
+                                        <input required="" class="form-control" name="title_ar" placeholder="Input box"
+                                            type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">title_(fr) </label>
+                                        <input required="" class="form-control" name="title_fr" placeholder="Input box"
+                                            type="text">
+                                    </div>
 
-                    </div>
+
+                                </div>
+                                <div class='row'>
+                                    <div class="col-lg">
+                                        <label class="form-label">article(ar)</label>
+                                        <textarea required="" class="form-control" name="article" placeholder="Textarea" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-lg">
+                                        <label class="form-label">article(ar)</label>
+                                        <textarea required="" class="form-control" name="article_ar" placeholder="Textarea" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-lg">
+                                        <label class="form-label">article(ar)</label>
+                                        <textarea required="" class="form-control" name="article_fr" placeholder="Textarea" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                
+                            <button type="submit" class="btn btn-primary mt-3 mb-0"> حفظ</button>
+                                
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <!--/div-->
             </div>
-            <!-- Container closed -->
+
+            <div class="row">
+                <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+                    <!--div-->
+                    <form id='newblog'>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="main-content-label mg-b-5">
+                                    معلومات الاتصال
+                                </div>
+                                <div class="row row-sm">
+                                    <div class="col-lg-4">
+                                        <label class="form-label">phone </label>
+                                        <input required="" class="form-control" name="phone" type="number">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">address</label>
+                                        <input required="" class="form-control" name="address" type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">email </label>
+                                        <input required="" class="form-control" name="email"  type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">instgram </label>
+                                        <input required="" class="form-control" name="insts"  type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">facebook </label>
+                                        <input required="" class="form-control" name="facebook"  type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">linkedin </label>
+                                        <input required="" class="form-control" name="linkedin"  type="text">
+                                    </div>
+                                      <div class="col-lg-4">
+                                        <label class="form-label">site </label>
+                                        <input required="" class="form-control" name="site"  type="text">
+                                    </div>
+                                      <div class="col-lg-4">
+                                        <label class="form-label">whatsapp </label>
+                                        <input required="" class="form-control" name="whatsapp"  type="text">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">logo </label>
+                                        <input name='logo' multiple class="form-control" required="" type="file">
+                                </div>
+                                </div>
+                            <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">حفظ</button>
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
+        </div>
     <!-- main-content closed -->
 @endsection
 

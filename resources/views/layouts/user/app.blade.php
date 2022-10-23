@@ -97,7 +97,7 @@
                                                 </ul>
                                             </li>
                                             <li><a href="#">Home Slider</a>
-                                                <ul>                                                    
+                                                <ul>
                                                     <li><a href="index-11.html">Slider Presentation 2</a></li>
                                                     <li><a href="index-16.html">Slider Presentation 3</a></li>
                                                     <li><a href="index-19.html">Home Modern Slider</a></li>
@@ -259,11 +259,11 @@
                     <!-- lang-wrap-->
                     <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
                         <div class="lang-wrap">
-                            <div class="show-lang"><span><i class="fas fa-globe-americas"></i><strong>En</strong></span><i class="fa fa-caret-down arrlan"></i></div>
+                            <div class="show-lang"><span><i class="fas fa-globe-americas"></i><strong>{{ getLang() }}</strong></span><i class="fa fa-caret-down arrlan"></i></div>
                             <ul class="lang-tooltip lang-action no-list-style">
-                                <li><a href="{{ route('set.localization','en') }}" class="current-lan" >English</a></li>
-                                <li><a href="{{ route('set.localization','fr') }}" data-lantext="Fr">Francais</a></li>
-                                <li><a href="{{ route('set.localization','ar') }}" data-lantext="ar">عربي</a></li>
+                                <li><a href="{{ route('set.localization','en') }}"  >English</a></li>
+                                <li><a href="{{ route('set.localization','fr') }}" >Francais</a></li>
+                                <li><a href="{{ route('set.localization','ar') }}" >عربي</a></li>
                             </ul>
                         </div>
                     </div>
@@ -279,7 +279,7 @@
 
             @yield('content')
 
-        
+
         <!-- START FOOTER -->
         <footer class="first-footer rec-pro">
             <div class="top-footer border-0">
@@ -290,26 +290,26 @@
                                 <a href="index.html" class="logo">
                                     <img src="images/logo-footer.svg" alt="netcom">
                                 </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
+                                <p>{{ getgoals() }}</p>
                             </div>
                             <div class="contactus">
                                 <ul>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="in-p">95 South Park Avenue, USA</p>
+                                            <p class="in-p">{{ getAddress() }}</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <p class="in-p">+456 875 369 208</p>
+                                            <p class="in-p">{{ getPhones() }}</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="in-p ti">support@findhouses.com</p>
+                                            <p class="in-p ti">{{ getEmail() }}</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -413,11 +413,9 @@
                     <div class="close-reg"><i class="fa fa-times"></i></div>
                     <h3>Welcome to <span>{{ getAppName() }}</strong></span></h3>
                     <div class="soc-log fl-wrap">
-                        <p>Login</p>
-                        <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
-                        <a href="#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
+
                     </div>
-                    <div class="log-separator fl-wrap"><span>Or</span></div>
+
                     <div id="tabs-container">
                         <ul class="tabs-menu">
                             <li class="current"><a href="#tab-1">Login</a></li>
@@ -446,15 +444,17 @@
                             <div class="tab">
                                 <div id="tab-2" class="tab-contents">
                                     <div class="custom-form">
-                                        <form method="post" name="registerform" class="main-register-form" id="main-register-form2">
-                                            <label>First Name * </label>
+                                        <form method="post" class="main-register-form" id="main-register-form2">
+                                            <label> Name* </label>
                                             <input name="name" type="text" onClick="this.select()" value="">
-                                            <label>Second Name *</label>
-                                            <input name="name2" type="text" onClick="this.select()" value="">
+                                            <label> Phone* </label>
+                                            <input name="phone" type="text" onClick="this.select()" value="">
                                             <label>Email Address *</label>
                                             <input name="email" type="text" onClick="this.select()" value="">
                                             <label>Password *</label>
                                             <input name="password" type="password" onClick="this.select()" value="">
+
+
                                             <button type="submit" class="log-submit-btn"><span>Register</span></button>
                                         </form>
                                     </div>
@@ -473,6 +473,8 @@
                 <div class="status-mes"></div>
             </div>
         </div>
+
+
         <!-- END PRELOADER -->
         <!-- ARCHIVES JS -->
         <script src="{{URL::asset('assets2/js/jquery-ui.js')}}"></script>
@@ -514,7 +516,30 @@
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
-
+       <script>
+                var modal = {};
+                modal.hide = function () {
+                    $('.modal').fadeOut();
+                    $("html, body").removeClass("hid-body");
+                };
+                $('.modal-open').on("click", function (e) {
+                    e.preventDefault();
+                    $('.modal').fadeIn();
+                    $("html, body").addClass("hid-body");
+                });
+                $('.close-reg').on("click", function () {
+                    modal.hide();
+                });
+                    $(".tabs-menu a").on("click", function (a) {
+                    a.preventDefault();
+                    $(this).parent().addClass("current");
+                    $(this).parent().siblings().removeClass("current");
+                    var b = $(this).attr("href");
+                    $(".tab-contents").not(b).css("display", "none");
+                    $(b).fadeIn();
+                });
+            </script>
+            <script src="{{URL::asset('assets2/js/script.js')}}"></script>
         <script>
             var tpj = jQuery;
             var revapi486;
@@ -637,7 +662,6 @@
         </script>
 
         <!-- MAIN JS -->
-        <script src="{{URL::asset('assets2/js/script.js')}}"></script>
 
     </div>
     <!-- Wrapper / End -->

@@ -2,11 +2,14 @@
 
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\DeveloperController;
 
 /*
@@ -37,7 +40,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('lang/{lang}', [HomeController::class, 'translate']);
         Route::post('trans/{lang}', [HomeController::class, 'translate_submit'])->name('translate_submit');
         Route::group(['prefix' => 'developers', 'as' => 'dev.'], function () {
-            Route::get('/create', [DeveloperController::class, 'create'])->name('create');
+            Route::get('/', [DeveloperController::class, 'index'])->name('index');
+            Route::post('/store', [DeveloperController::class, 'store'])->name('store');
+            Route::post('/delete', [DeveloperController::class, 'delete'])->name('delete');
         });
         Route::group(['prefix' => 'projects', 'as' => 'projects.'], function () {
             Route::get('/create', [
@@ -65,7 +70,16 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/', [TypeController::class, 'index'])->name('index');
         });
         Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
-            Route::get('/', [TypeController::class, 'index'])->name('index');
+            Route::get('/', [SettingController::class, 'index'])->name('index');
+        });
+        Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
+            Route::get('/', [BlogController::class, 'index'])->name('index');
+            Route::post('/store', [BlogController::class, 'store'])->name('store');
+            Route::post('/delete', [BlogController::class, 'delete'])->name('delete');
+        });
+        Route::group(['prefix' => 'area', 'as' => 'area.'], function () {
+            Route::get('/create', [AreaController::class, 'create'])->name('create');
+            Route::get('/store', [AreaController::class, 'store'])->name('store');
         });
     });
 });

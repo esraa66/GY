@@ -51,18 +51,21 @@ class SettingController extends Controller
     }
     public function storestatus(Request $request)
     {
-
         $status = new status();
         $status->name = $request->status;
         $status->save();
 
+        if ($request->status_ar && $request->staus_fr) {
         $langs = ['ar', 'fr'];
-        foreach ($langs as $lang) {
-            $name = 'status_' . $lang;
-            add($status, [
-                'status' => $request->$name,
-            ], $lang);
+            foreach ($langs as $lang) {
+                $name = 'status_' . $lang;
+                add($status, [
+                    'status' => $request->$name,
+                ], $lang);
+            }
         }
+
+
 
         return response()->json(['err' => false, 'msg', 'تم الحفظ بنجاح'], 200);
     }
@@ -98,6 +101,6 @@ class SettingController extends Controller
     public function index(Request $request)
     {
         $settings = Setting::pluck('value', 'key')->toArray();
-        return view('settings.settings', compact('settings'));
+        return view('admin.setting.index', compact('settings'));
     }
 }

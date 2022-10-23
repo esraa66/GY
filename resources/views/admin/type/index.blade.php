@@ -40,7 +40,7 @@
                         <form class="needs-validation was-validated" id="createType">
                         <div class="card-body">
                             <div class="main-content-label mg-b-5">
-                                إنشاء حالة جديده 
+                                إنشاء حالة جديده
                             </div>
                             <div class="row ">
                                 <div class="col-lg-4">
@@ -99,6 +99,9 @@
     <!-- main-content closed -->
 @endsection
 
+
+
+
 @section('js')
     <!-- Internal Data tables -->
     <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
@@ -109,8 +112,6 @@
     <script src="{{ URL::asset('js/sweetalert2@11.js') }}"></script>
     <script src="{{ URL::asset('js/sweetalert2.all.js') }}"></script>
     @include('vue')
-
-        
     <script type="text/javascript">
 
         $(function() {

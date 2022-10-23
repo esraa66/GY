@@ -6,14 +6,33 @@ use App\Localization\Locale;
 use Illuminate\Support\Facades\URL;
 
 
-
-function getLang()
+/////////////////////////language
+function updateLang($row, $values_arr, $lang)
 {
+    $table = $row->table;
+    $columns = $row->transcodeColumns;
+    $row_id = $row->id;
 
-    $locale = new Locale;
-    return $locale;
+    foreach ($columns as $col) {
+        $tc = App\Models\Transcode::where('table_', $table)->where('row_', $row_id)->where('lang_', $lang)->where('column_', $col)->first();
+        if ($tc) {
+            if ($values_arr[$col]) {
+                $tc->transcode = $values_arr[$col];
+                $tc->save();
+            }
+        } else {
+            if ($values_arr[$col]) {
+                $tc = new App\Models\Transcode;
+                $tc->table_ = $table;
+                $tc->column_ = $col;
+                $tc->row_ = $row_id;
+                $tc->lang_ = $lang;
+                $tc->transcode = $values_arr[$col];
+                $tc->save();
+            }
+        }
+    }
 }
-
 function add($row, $values_arr, $lang)
 {
     $table = $row->table;
@@ -204,6 +223,28 @@ function evaluateSp($row, $lang, $forceToGetArabic = 0)
     return [];
 }
 
+function deletetranscode($row)
+{
+    $table = $row->table;
+    $columns = $row->transcodeColumns;
+    $row_id = $row->id;
+
+    $rans = App\Models\Transcode::where('table_', $table)->where('row_', $row_id)->get();
+
+    foreach ($rans as $r) {
+        $r->delete();
+    }
+}
+
+///////////////app data ////
+
+function getLang()
+{
+
+    $locale = new Locale;
+    return $locale->locale;
+}
+
 function getAppName()
 {
     static $appName;
@@ -257,5 +298,16 @@ function getPhones()
 function getAddress()
 {
     $t = Setting::where('key', '=', 'address')->first();
+    return $t->value;
+}
+function getgoals()
+{
+    $t = Setting::where('key', '=', 'goals')->first();
+    $msg = evaluate($t)['value'];
+    return $msg;
+}
+function getEmail()
+{
+    $t = Setting::where('key', '=', 'email')->first();
     return $t->value;
 }

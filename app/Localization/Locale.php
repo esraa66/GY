@@ -19,6 +19,8 @@ class Locale
      */
     public function __construct()
     {
+        $this->locale = \Session('locale');
+
         if (\Session('locale') != '') {
             App::setLocale(\Session('locale'));
         } else {
