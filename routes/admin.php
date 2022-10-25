@@ -80,6 +80,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::group(['prefix' => 'area', 'as' => 'area.'], function () {
             Route::get('/create', [AreaController::class, 'create'])->name('create');
             Route::get('/store', [AreaController::class, 'store'])->name('store');
+            Route::get('/{id}', [AreaController::class, 'getArea'])->name('getarea');
         });
     });
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html >
 
 <head>
     <meta charset="UTF-8">
@@ -18,23 +18,9 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/fontawesome-5-all.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/font-awesome.min.css')}}">
-    <!-- Slider Revolution CSS Files -->
-    <link rel="stylesheet" href="{{URL::asset('assets2/revolution/css/settings.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/revolution/css/layers.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/revolution/css/navigation.css')}}">
-    <!-- ARCHIVES CSS -->
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/search.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/animate.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/lightcase.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/menu.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/slick.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/slider-search2.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/styles.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/maps.css')}}">
-    <link rel="stylesheet" id="color" href="{{URL::asset('assets2/css/colors/darkblue.css')}}">
+
+
+    @yield('css')
 </head>
 
 <body class="homepage-6 homepage-9 hd-white home-11 hp1">
@@ -51,7 +37,7 @@
                     <div class="left-side">
                         <!-- Logo -->
                         <div id="logo">
-                            <a href="index.html"><img src="{{URL::asset('assets2/images/logo.svg')}}" alt=""></a>
+                            <a href="{{ url('/')}}"><img src="{{URL::asset('assets2/images/logo.svg')}}" alt=""></a>
                         </div>
                         <!-- Mobile Navigation -->
                         <div class="mmenu-trigger">
@@ -193,7 +179,7 @@
                                                     <li><a href="change-password.html">Change Password</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="about.html">About Us</a></li>
+                                             <li><a href="{{route('user.about')}}">About Us</a></li>
                                             <li><a href="faq.html">Faq</a></li>
                                             <li><a href="pricing-table.html">Pricing Tables</a></li>
                                             <li><a href="404.html">Page 404</a></li>
@@ -231,17 +217,23 @@
                     </div>
                     <!-- Right Side Content / End -->
                     @auth
-                    <!-- Right Side Content / End -->
+     <!-- Right Side Content / End -->
                     <div class="header-user-menu user-menu add">
                         <div class="header-user-name">
-                            <span><img src="images/testimonials/ts-1.jpg" alt=""></span>Hi, Mary!
+                            <span><img src="{{ asset('/attachments/users/'. Auth::user()->photo ) }}" alt=""></span>{{Auth::user()->name}}
                         </div>
                         <ul>
-                            <li><a href="user-profile.html"> Edit profile</a></li>
-                            <li><a href="add-property.html"> Add Property</a></li>
-                            <li><a href="payment-method.html">  Payments</a></li>
-                            <li><a href="change-password.html"> Change Password</a></li>
-                            <li><a href="#">Log Out</a></li>
+                            <li> <div class="modal-open2" ><a href="">Edit profile</a></div></li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                        <i class="fas fa-sign-out-alt"></i>Log Out
+                                    </a>
+
+                                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            </li>
+
                         </ul>
                     </div>
                     <!-- Right Side Content / End -->
@@ -405,7 +397,7 @@
         <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
         <!-- END FOOTER -->
 
-        <!--register form -->
+      <!--register form -->
         <div class="login-and-register-form modal">
             <div class="main-overlay"></div>
             <div class="main-register-holder">
@@ -424,8 +416,9 @@
                         <div class="tab">
                             <div id="tab-1" class="tab-contents">
                                 <div class="custom-form">
-                                    <form method="post" name="registerform">
-                                        <label>Username or Email Address * </label>
+                                    <form  action= "/login" method="post" name="registerform">
+                                         @csrf
+                                        <label>Email Address * </label>
                                         <input name="email" type="text" onClick="this.select()" value="">
                                         <label>Password * </label>
                                         <input name="password" type="password" onClick="this.select()" value="">
@@ -436,32 +429,110 @@
                                             <label for="check-a">Remember me</label>
                                         </div>
                                     </form>
-                                    <div class="lost_password">
+                                    <!-- <div class="lost_password">
                                         <a href="#">Lost Your Password?</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
+
                             <div class="tab">
                                 <div id="tab-2" class="tab-contents">
                                     <div class="custom-form">
-                                        <form method="post" class="main-register-form" id="main-register-form2">
+                                        <form  method="post" action="{{route('register') }}"
+                                         class="main-register-form" id="main-register-form2" enctype="multipart/form-data">
+                                            @csrf
                                             <label> Name* </label>
-                                            <input name="name" type="text" onClick="this.select()" value="">
+                                            <input name="name" type="text" onClick="this.select()"  required>
                                             <label> Phone* </label>
-                                            <input name="phone" type="text" onClick="this.select()" value="">
+                                            <input name="phone" type="text" onClick="this.select()"  required>
                                             <label>Email Address *</label>
-                                            <input name="email" type="text" onClick="this.select()" value="">
+                                            <input name="email" type="text" onClick="this.select()"  required>
+
+                                            <lale>Select Country *</lable><br><br>
+                                            <select name="country" value="{{old('country')}}" class="nice-select form-control wide" tabindex="0" class="list" required><span>Select</span>
+                                                @foreach( \App\Models\Country::all() as $country)
+                                                <option value="{{$country->name}}" class="option">{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <label> City* </label>
+                                            <input name="city" type="text" onClick="this.select()" value="" required>
                                             <label>Password *</label>
-                                            <input name="password" type="password" onClick="this.select()" value="">
+                                            <input name="password" onClick="this.select()" type="password" onClick="this.select()" value="" required>
 
-
+                                                <label >Project Personal Image *</label>
+                                                <input type="file"  name="photo" value="{{old('photo')}}"  placeholder="Enter your project Main images" required>
                                             <button type="submit" class="log-submit-btn"><span>Register</span></button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <!--register form end -->
+<!--register form -->
+        <div class="login-and-register-form modal2">
+            <div class="main-overlay"></div>
+            <div class="main-register-holder">
+                <div class="main-register fl-wrap">
+                    <div class="close-reg"><i class="fa fa-times"></i></div>
+                    <h3>Welcome to <span>{{ getAppName() }}</strong></span></h3>
+                    <div class="soc-log fl-wrap">
+
+                    </div>
+                    @if( Auth::user())
+                    <div id="tabs-container">
+                        <ul class="tabs-menu">
+                            <li class="current">Update Profile</li>
+                        </ul>
+                        <div class="tab">
+                            <div id="tab-1" class="tab-contents">
+                                <div class="custom-form">
+                                        </form>
+                                     <form action = "{{ route('user.editprofile') }} "  method="post"
+                                         class="main-register-form" id="main-register-form2" enctype="multipart/form-data">
+                                            @csrf
+                                            <label> Name *</label>
+                                            <input name="name" type="text" value ="{{ Auth::user()->name }}" onClick="this.select()" required>
+                                            <label> Phone *</label>
+                                            <input name="phone" type="text" value ="{{ Auth::user()->phone }}" onClick="this.select()"  required>
+                                            <label>Email Address *</label>
+                                            <input name="email" type="text" value ="{{ Auth::user()->email }}" onClick="this.select()"  required>
+                                            <lale>Select Country *</lable><br><br>
+                                            <select name="country" value="{{old('country')}}" class="nice-select form-control wide" tabindex="0" class="list" required><span>Select</span>
+                                                @foreach( \App\Models\Country::all() as $country )
+                                                <option @if(Auth::user()->country == $country->name) selected @endif value="{{$country->name}}" class="option">{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <lale>City *</lable><br><br>
+                                            <input name="city" type="text" value ="{{ Auth::user()->city }}" onClick="this.select()"  required>
+
+                                            <label>Password *</label>
+                                            <input name="password"  onClick="this.select()" type="password" onClick="this.select()"  >
+
+                                            <label>Project Personal Image *</label>
+                                            <input type="file"  name="photo" value="{{old('photo')}}"  >
+                                                <!-- <input type="file"  name="imageone" ><br><br> -->
+                                            <img src = "{{ asset('/attachments/users/'. Auth::user()->photo) }} "
+                                                        class = "img-thumnail" width = "75"
+                                                        style="width:100px;height: 100px;" alt="image"/>
+
+                                            <button type="submit" class="log-submit-btn"><span>Update Profile</span></button>
+                                        </form>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -503,6 +574,8 @@
         <script src="{{URL::asset('assets2/js/searched.js')}}"></script>
         <script src="{{URL::asset('assets2/js/forms-2.js')}}"></script>
         <script src="{{URL::asset('assets2/js/color-switcher.js')}}"></script>
+        <script src="{{URL::asset('assets2/js/search.js')}}"></script>
+
 
         <!-- Slider Revolution scripts -->
         <script src="{{URL::asset('assets2/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
@@ -516,7 +589,8 @@
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
-       <script>
+        @yield('js')
+    <script>
                 var modal = {};
                 modal.hide = function () {
                     $('.modal').fadeOut();
@@ -527,8 +601,22 @@
                     $('.modal').fadeIn();
                     $("html, body").addClass("hid-body");
                 });
-                $('.close-reg').on("click", function () {
+                 $('.close-reg').on("click", function () {
                     modal.hide();
+                });
+                modal.hide2 = function () {
+                    $('.modal2').fadeOut();
+                    $("html, body").removeClass("hid-body");
+                };
+                $('.modal-open2').on("click", function (e) {
+                    e.preventDefault();
+                    $('.modal2').fadeIn();
+                    $("html, body").addClass("hid-body");
+                });
+
+
+                $('.close-reg').on("click", function () {
+                    modal.hide2();
                 });
                     $(".tabs-menu a").on("click", function (a) {
                     a.preventDefault();
@@ -537,9 +625,13 @@
                     var b = $(this).attr("href");
                     $(".tab-contents").not(b).css("display", "none");
                     $(b).fadeIn();
+
                 });
             </script>
             <script src="{{URL::asset('assets2/js/script.js')}}"></script>
+
+
+
         <script>
             var tpj = jQuery;
             var revapi486;
@@ -663,8 +755,14 @@
 
         <!-- MAIN JS -->
 
+        <!-- MAIN JS -->
+
     </div>
     <!-- Wrapper / End -->
+
+
+
+
 </body>
 
 </html>

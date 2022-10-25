@@ -69,9 +69,9 @@
                                         <textarea required="" class="form-control" name="article_fr" placeholder="Textarea" rows="3"></textarea>
                                     </div>
                                 </div>
-                                
+
                             <button type="submit" class="btn btn-primary mt-3 mb-0"> حفظ</button>
-                                
+
                             </div>
                         </div>
                     </form>
@@ -126,7 +126,7 @@
                                 </div>
                                 </div>
                             <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">حفظ</button>
-                                
+
                             </div>
                         </div>
                     </form>

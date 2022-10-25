@@ -107,7 +107,7 @@
                                 <h4 class="card-title mg-b-0"> المطورين </h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
-                          
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -267,13 +267,13 @@
                 saveData: function(e) {
                     e.preventDefault();
                         this.error = []
-                        this.validation(this.name , '  الاسم باللغه الانجليزيه مطلوب ');
+
                     if (this.error.length !== 0) {
                             return false
                         }
-                    let formData = new FormData(document.getElementById('createType'));
+                    let formData = new FormData(document.getElementById('newdev'));
                     this.load = true;
-                    axios.post('{{ route('type.store') }}', formData).then(response => {
+                    axios.post('{{ route('dev.store') }}', formData).then(response => {
                         console.log(response)
                         if (response.data.err == true) {
                             swal({
@@ -340,7 +340,7 @@
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });
-                            
+
                         }
                     }).catch(response => {
                         swal({

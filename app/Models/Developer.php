@@ -18,6 +18,11 @@ class Developer extends Model
         'fax',
         'site',
     ];
+
+    public function project()
+    {
+        return $this->hasMany(Project::class, 'dev_id');
+    }
 }
 
 

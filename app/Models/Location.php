@@ -11,9 +11,13 @@ class Location extends Model
 
     public $table = 'locations';
 
-    public $fillable = ['location'];
+    public $fillable = ['location', 'image'];
 
     public $transcodeColumns = [
         'location',
+        
     ];
+
+
+
 }

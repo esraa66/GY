@@ -258,7 +258,7 @@ function getAppName()
 
 function deleteMedia($oldImageProduct, $path)
 {
-    $oldImage = public_path("img//$path//" . $oldImageProduct);
+    $oldImage = public_path("images//$path//" . $oldImageProduct);
     if (file_exists($oldImage)) {
         unlink($oldImage);
     }

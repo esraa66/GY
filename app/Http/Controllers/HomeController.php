@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Test;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Transcode\TranscodeService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -48,6 +52,41 @@ class HomeController extends Controller
         }
 
         return ' success';
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+    public function editprofile(Request $request)
+    {
+
+        $user = User::findOrFail(Auth::user()->id);
+
+        if ($request->photo) {
+            $photo = $request->photo;
+            $file_extension = $photo->getClientOriginalExtension();
+            $file_name = time() . '.' . $file_extension;
+            $path = 'attachments/users/';
+            $photo->move($path, $file_name);
+            $user->photo = $file_name;
+            if ($request->password) {
+                $user->password = $request->password;
+            }
+            $user->save();
+        }
+
+
+        DB::table('users')->where('id', Auth::user()->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'country' => $request->country,
+            'city' => $request->city,
+        ]);
+
+        return redirect()->route('main');
     }
 
     public function translate($lang)

@@ -2,7 +2,12 @@
 
 use App\Localization\Locale;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +24,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main');
 
 Auth::routes();
 
+Route::post('/editprofile', [HomeController::class, 'editprofile'])->name('user.editprofile');
+Route::get('/about', [HomeController::class, 'about'])->name('user.about');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test', function () {
     return view('test');
 });
 Route::post('/post', [App\Http\Controllers\HomeController::class, 'storTest'])->name('teststore');
+Route::get('/project/{id}', [ProjectController::class, 'OneProject'])->name('project');
+Route::get('/blog/{id}', [BlogController::class, 'oneBlog'])->name('blogone');
+Route::post('/reqContact', [RequestController::class, 'store'])->name('reqcontact');
+Route::get('/allprojects', [ProjectController::class, 'allprojects'])->name('allprojects');
+Route::get('/filterLocation/{id}', [ProjectController::class, 'filterLocation'])->name('filterLocation');
 
 Route::get('/locale/{lang}', function ($lang) {
     \Session(['locale' => $lang]);

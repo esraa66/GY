@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/sumoselect/sumoselect-rtl.css') }}">
     <!--Internal  TelephoneInput css-->
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
+    <link href="{{URL::asset('assets/plugins/quill/quill.snow.css')}}" rel="stylesheet">
+<link href="{{URL::asset('assets/plugins/quill/quill.bubble.css')}}" rel="stylesheet">
+<link href="node_modules/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="node_modules/froala-editor/js/froala_editor.pkgd.min.js"></script>
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -68,6 +72,8 @@
 
                                 </div>
                                 <div class='row'>
+                                  
+
                                     <div class="col-lg">
                                         <label class="form-label">article(ar)</label>
                                         <textarea required="" class="form-control" name="article" placeholder="Textarea" rows="3"></textarea>
@@ -158,6 +164,10 @@
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
+    <!--Internal quill js -->
+<script src="{{URL::asset('assets/plugins/quill/quill.min.js')}}"></script>
+<!-- Internal Form-editor js -->
+<script src="{{URL::asset('assets/js/form-editor.js')}}"></script>
     @include('vue')
     <script>
          $(function() {
@@ -256,13 +266,13 @@
                         console.log(response)
                         if (response.data.err == true) {
                             swal({
-                                title: response.msg,
+                                title: response.data.msg,
                                 type: 'warning',
                                 confirmButtonText: 'موافق',
                             });
                         } else {
                             swal({
-                                title: response.msg,
+                                title: response.data.msg,
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });

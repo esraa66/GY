@@ -3,15 +3,16 @@
 namespace App\Http\Traits;
 
 use function PHPUnit\Framework\fileExists;
-
+use  Image;
 trait media
 {
 
-    public function uploadMedia($image, $path)
+    public function uploadMedia($image, $path, $h, $w)
     {
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('images//' . $path), $imageName);
-        return $imageName;
+        $classifiedImg = $image;
+        $filename = time() . rand(1, 200) . '.webp';
+        $image = Image::make($classifiedImg)->encode('webp', 90)->resize($h, $w)->save(public_path($path  . $filename));
+        return $filename;
     }
     public function deleteMedia($oldImageProduct, $path)
     {
@@ -20,4 +21,21 @@ trait media
             unlink($oldImage);
         }
     }
+
+    public function uploadManyMedia($image, $path, $count, $h, $w)
+    {
+        $classifiedImg = $image;
+        $filename = time() . rand(1, 200) . $count . '.webp';
+        $image = Image::make($classifiedImg)->encode('webp', 90)->resize($h, $w)->save(public_path($path  . $filename));
+        return $filename;
+    }
+
+    public function uploadfiles($file, $path)
+    {
+
+        $fileName = time() .  '.' . $file->extension();
+        $file->move(public_path('pdfs//' . $path), $fileName);
+        return $fileName;
+    }
+    
 }

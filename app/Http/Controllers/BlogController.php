@@ -2,49 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\media;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Image;
 use DataTables;
+use Laravel\Ui\Presets\Vue;
 
 class BlogController extends Controller
 {
-
+    use media;
     public function store(Request $request)
     {
 
         $validatedData = $request->validate([
             'title' => 'required',
+            'title_ar' => 'required',
+            'title_fr' => 'required',
             'article' => 'required',
+            'article_fr' => 'required',
+            'article_ar' => 'required',
             'image' => 'required',
         ], [
             'title.required' => 'العنوان مطلوب ',
+            'title_ar.required' => 'العنوان مطلوب ',
+            'title_fr.required' => 'العنوان مطلوب ',
+            'article_ar.required' => ' المقال مطلوب  ',
+            'article_fr.required' => ' المقال مطلوب  ',
             'article.required' => ' المقال مطلوب  ',
             'image.required' => ' صورة المقال مطلوبه  ',
         ]);
         if ($request->hasFile('image')) {
-            $classifiedImg = $request->file('image');
-            $filename = time() . rand(1, 200);
-            $image = Image::make($classifiedImg)->encode('webp', 90)->resize(700, 600)->save(public_path('images/blogs/'  .  $filename . '.webp'));
+            $filename = $this->uploadMedia($request->file('image'), 'images/blogs/', 700, 600);
         }
 
         $blog = new Blog();
         $blog->title = $request->title;
+        $blog->title_ar = $request->title_ar;
+        $blog->title_fr = $request->title_fr;
         $blog->article = $request->article;
-        $blog->image =  $filename  . '.webp';
+        $blog->article_ar = $request->article_ar;
+        $blog->article_fr = $request->article_fr;
+        $blog->image =  $filename;
         $blog->save();
-
-        if ($request->title_ar) {
-            $langs = ['ar', 'fr'];
-            foreach ($langs as $lang) {
-                $name = 'title_' . $lang;
-                $article = 'article_' . $lang;
-                add($blog, [
-                    'title' => $request->$name,
-                    'article' => $request->$article,
-                ], $lang);
-            }
-        }
         return response()->json(['err' => false, 'msg' => 'تم اضافة مقال'], 200);
     }
     public function index(Request $request)
@@ -64,15 +64,39 @@ class BlogController extends Controller
         return view('admin.blogs.create');
     }
 
+    public function edit($id)
+    {
 
+        $blog =  Blog::find($id);
+        return view('admin.blog.edit', compact('blog'));
+    }
 
-
-
+    public function update(Request $request)
+    {
+        $blog =  Blog::find($request->id);
+        if ($request->hasFile('image')) {
+            $blog->image  = $this->uploadMedia($request->file('image'), 'images/blogs/', 700, 600);
+        }
+        $blog->title = $request->title;
+        $blog->title_ar = $request->title_ar;
+        $blog->title_fr = $request->title_fr;
+        $blog->article = $request->article;
+        $blog->article_ar = $request->article_ar;
+        $blog->article_fr = $request->article_fr;
+        $blog->save();
+        return response()->json(['err' => false, 'msg' => '  تم تعديل المقال بنجاح '], 200);
+    }
     public function delete(Request $request)
     {
         $b = Blog::find($request->id);
         $b->delete();
 
         return response()->json(['err' => false, 'msg' => ' تم مسح المقاله '], 200);
+    }
+
+    public function oneBlog($id)
+    {
+        $blog =  Blog::find($id);
+        return view('blogs.oneblog', compact('blog'));
     }
 }
