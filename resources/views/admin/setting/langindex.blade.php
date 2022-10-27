@@ -26,78 +26,57 @@
         <div id='blogId'>
         <div>
 
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
-                    <!--div-->
-                    {{-- <form id='newblog'> --}}
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="main-content-label mg-b-5">
-                                      اعدادات الموقع
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                            <h2> لغات التشغيل  </h2>
-                                    </div>
-                                     <div class="col-2">
 
-                                    <a hreaf='{{route('setting.lang','ar') }}' class="btn btn-primary mt-3 mb-0">  عربي</a>
-                                    </div>
-                                     <div class="col-2">
-                                    <button type="button"  class="btn btn-primary mt-3 mb-0"> انجلش</button>
-                                    </div>
-                                     <div class="col-2">
-                                    <button type="button" class="btn btn-primary mt-3 mb-0"> حفظ</button>
+            <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="card-title mg-b-0">SIMPLE TABLE</h4>
+                                <i class="mdi mdi-dots-horizontal text-gray"></i>
+                            </div>
+                            <p class="tx-12 tx-gray-500 mb-2">Example of Valex Simple Table. <a href="">Learn
+                                    more</a></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table text-md-nowrap" id="type">
+                                    <thead>
+                                        <tr>
+                                            <th class="wd-15p border-bottom-0"> id</th>
+                                            <th class="wd-15p border-bottom-0"> المفتاح </th>
+                                            <th class="wd-15p border-bottom-0"> الترجمة </th>
+                                            <th class="wd-15p border-bottom-0">  تعديل </th>
 
-                                    </div>
-                                </div>
-                                {{-- <div class="row row-sm">
-                                    <div class="col-lg-4">
-                                        <label class="form-label">title_(en) </label>
-                                        <input required="" class="form-control" name="title" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">title_(ar)</label>
-                                        <input required="" class="form-control" name="title_ar" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">title_(fr) </label>
-                                        <input required="" class="form-control" name="title_fr" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                </div> --}}
-                                @foreach (\App\Models\Setting::whereIn('id',[1,2,3,4,5,6,7,8,9,10,11,12,13])->get(); as  $st)
-                                <br> <hr> <br>
-                                    <h6> {{ $st->key }} </h6>
-                                    <form id='{{ $st->id }}'>
-                                    <div class='row'>
-                                        <input type="hidden" name='id' value="{{$st->id}}" />
-                                    <div class="col-4  ">
-                                        <label class="form-label"> English  </label>
-                                        <textarea required="" class="form-control" name="value_en" rows="3"> {{ $st->value_en }} </textarea>
-                                    </div>
-                                    <div class=" col-4 ">
-                                        <label class="form-label"> عربي  </label>
-                                        <textarea  class="form-control" name="value_ar"  rows="3">{{ $st->value_ar }} </textarea>
-                                    </div>
-                                    <div class=" col-3 ">
-                                        <label class="form-label"> french </label>
-                                        <textarea  class="form-control" name="value_fr"  rows="3"> {{ $st->value_fr }}  </textarea>
-                                    </div>
-
-                                    <button type="button" onclick="updateSetting({{$st->id}})" class="btn btn-primary mt-3 mb-0"> حفظ</button>
-                                    </div>
-                                    </form>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                @foreach($lang_data as $count=>$language)
+                                    <tr id="lang-{{$language['key']}}">
+                                        <td>{{$count+1}}</td>
+                                        <td>
+                                            <input type="text" name="key[]" value="{{$language['key']}}" hidden>
+                                            <label>{{$language['key']}}</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" name="value[]"
+                                                   id="value-{{$count+1}}"
+                                                   value="{{$language['value']}}">
+                                        </td>
+                                        <td style="width: 100px">
+                                            <button type="button"
+                                                    onclick="update_lang('{{$language['key']}}',$('#value-{{$count+1}}').val())"
+                                                    class="btn btn-primary"> update
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @endforeach
 
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
+                    </div>
                 </div>
-            </div>
 
             {{-- <div class="row">
                 <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
@@ -167,17 +146,23 @@
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
     <script src="{{ URL::asset('js/sweetalert2@11.js') }}"></script>
     <script src="{{ URL::asset('js/sweetalert2.all.js') }}"></script>
-    @include('vue')
-        <script>
-        function updateSetting(id) {
-            let formData = new FormData(document.getElementById(id));
-            axios.post("{{route('setting.update')}}", formData).then(response => {
-                //    $('#loading').hide();
-                        swal({
-                            title: 'sdsdd',
-                            type: 'success',
-                            confirmButtonText: 'موافق',
-                        });
+        @include('vue')
+    <script>
+function update_lang(key, value) {
+
+            data =  {
+                    key: key,
+                    value: value
+                },
+                // $('#loading').show();
+            axios.post("{{route('translate_submit',[$lang])}}", data).then(response => {
+                   $('#loading').hide();
+                            swal({
+                                title: 'sdsdd',
+                                type: 'success',
+                                confirmButtonText: 'موافق',
+                            });
+
                     }).catch(response => {
                         swal({
                             title: response.response.message,

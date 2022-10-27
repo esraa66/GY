@@ -719,7 +719,7 @@
             </div>
         </section>
         <!-- END SECTION PROPERTIES LISTING -->
-
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
 @endsection
 
 @section('js')

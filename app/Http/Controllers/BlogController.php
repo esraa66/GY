@@ -54,7 +54,8 @@ class BlogController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a>';
+                $edit = route('blogs.edit', $row->id);
+                $actionBtn = '<a href="' . $edit . '" class="edit m-1 btn btn-success btn-sm">Edit</a>';
                     $actionBtn .= '<a href="javascript:void(0)" value="' . $row->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
@@ -68,7 +69,7 @@ class BlogController extends Controller
     {
 
         $blog =  Blog::find($id);
-        return view('admin.blog.edit', compact('blog'));
+        return view('admin.blogs.edit', compact('blog'));
     }
 
     public function update(Request $request)
@@ -98,5 +99,19 @@ class BlogController extends Controller
     {
         $blog =  Blog::find($id);
         return view('blogs.oneblog', compact('blog'));
+    }
+    public function allarticle()
+    {
+        $articles = Blog::paginate(2);
+
+        return view('articles.fullarticle', compact('articles'));
+    }
+
+    public function OneArticle($id)
+    {
+
+        $comments = Comment::all();
+        $article = Blog::find($id);
+        return view('articles.oneArticle', compact('article', 'comments'));
     }
 }

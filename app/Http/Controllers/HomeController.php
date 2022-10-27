@@ -89,16 +89,7 @@ class HomeController extends Controller
         return redirect()->route('main');
     }
 
-    public function translate($lang)
-    {
-        $full_data = include(base_path('lang/' . $lang . '/auth.php'));
-        $lang_data = [];
-        ksort($full_data);
-        foreach ($full_data as $key => $data) {
-            array_push($lang_data, ['key' => $key, 'value' => $data]);
-        }
-        return view('admin.language.translate', compact('lang', 'lang_data'));
-    }
+
 
     public function translate_submit(Request $request, $lang)
     {

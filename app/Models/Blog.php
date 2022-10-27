@@ -56,4 +56,8 @@ class Blog extends Model
             deleteMedia($blog->image, 'blog/');
         });
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'blog_id');
+    }
 }

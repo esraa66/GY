@@ -56,30 +56,18 @@
                                 <div class="row row-sm">
                                 <div class="col-lg-6">
                                         <label class="form-label">name</label>
-                                        <input  required v-moel ='name' class="form-control" name="name" placeholder="Input box" type="text">
+                                        <input  required v-model='name' class="form-control" name="name" placeholder="Input box" type="text">
                                 </div>
                                 <div class="col-lg-6">
                                         <label class="form-label">Logo </label>
                                         <input name='logo' multiple class="form-control"  required="" type="file" >
 								</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
-                        <!--div-->
-                        <div class="card">
-                            <div class="card-body">
 
-                                <div class="main-content-label mg-b-5">
-                                    معلومات التواصل
-                                </div>
-                                <div class="row row-sm">
-                                    <div class="col-lg">
+                                    <div class="col-lg-3">
                                         <label class="form-label">email</label>
                                         <input  class="form-control" name="email" placeholder="Project@email.com" type="email">
                                     </div>
-                                    <div class="col-lg">
+                                    <div class="col-lg-3">
                                             <label class="form-label">fax</label>
                                             <input   class="form-control" name="fax" placeholder="Input box" type="number">
                                     </div>
@@ -87,18 +75,20 @@
                                         <label class="form-label">phone</label>
                                         <input  class="form-control" name="phone" placeholder="Input box" type="number">
                                     </div>
-                                    <div class="col-lg">
+                                    <div class="col-lg-3">
                                         <label class="form-label">site</label>
                                         <input   class="form-control" name="site" placeholder="Input box" type="number">
                                     </div>
                                 </div>
                                       <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">  حفظ</button>
-                                </div>
 
                             </div>
                         </div>
-                    </form>
+                    </div>
+
+                </form>
                 </div>
+
                 <div class="row">
                     <div class="col-xl-12">
                     <div class="card">
@@ -115,8 +105,11 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0"> id</th>
-                                            <th class="wd-15p border-bottom-0"> name </th>
+                                            <th class="wd-15p border-bottom-0"> الاسم </th>
                                             <th class="wd-15p border-bottom-0"> action </th>
+                                            <th class="wd-15p border-bottom-0"> phone </th>
+                                            <th class="wd-15p border-bottom-0"> email </th>
+                                            <th class="wd-15p border-bottom-0"> fax </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -166,8 +159,9 @@
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
     @include('vue')
     <script>
-        $(function() {
-            var table = $('#type').DataTable({
+    // let table = $('#type');
+    $(function() {
+             let table = $('#type').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -191,10 +185,21 @@
                         name: 'action',
                         orderable: true,
                         searchable: true
+                    },
+                    {
+                        data:'phone',
+                        name:'phone'
+                    },
+                    {
+                        data:'email',
+                        name:'email'
+                    },
+                    {
+                        data:'fax',
+                        name:'fax'
                     }
                 ]
-            })
-
+            });
             $('#type tbody').on('click', '.delete', function() {
                     var value = $(this).attr("value");
                     Swal.fire({
@@ -235,69 +240,6 @@
                     })
                     // console.log($(this).attr("value"));
             });
-
-        });
-
-
-
-
-
-        content = new Vue({
-            'el': '#types',
-            data: {
-                name_ar:'',
-                name_fr:'',
-                name:'',
-                error:[]
-            },
-            methods: {
-                validation:function(el , msg){
-                    if(el == ''){
-                        this.error.push({
-                            'err' : 'err'
-                        });
-                        swal({
-                                title:  msg,
-                                type: 'warning',
-                                confirmButtonText: 'موافق',
-                            });
-                        return 0;
-                    }
-                },
-                saveData: function(e) {
-                    e.preventDefault();
-                        this.error = []
-
-                    if (this.error.length !== 0) {
-                            return false
-                        }
-                    let formData = new FormData(document.getElementById('newdev'));
-                    this.load = true;
-                    axios.post('{{ route('dev.store') }}', formData).then(response => {
-                        console.log(response)
-                        if (response.data.err == true) {
-                            swal({
-                                title: response.data.msg,
-                                type: 'warning',
-                                confirmButtonText: 'موافق',
-                            });
-                        } else {
-                            swal({
-                                title: response.data.msg,
-                                type: 'success',
-                                confirmButtonText: 'موافق',
-                            });
-                            this.load = false;
-                        }
-                    }).catch(response => {
-                        swal({
-                            title: response.response.message,
-                            type: 'warning',
-                            confirmButtonText: 'موافق',
-                        });
-                    })
-                }
-            }
         });
         content = new Vue({
             'el': '#projectbuild',
@@ -322,21 +264,22 @@
                 saveData: function(e) {
                     e.preventDefault();
                     this.error = []
-                    this.validation(this.name , '  الاسم باللغه الانجليزيه مطلوب ');
+                    this.validation(this.name , '  اسم المطور مطلوب    ');
                     if (this.error.length !== 0) {
                             return false
                         }
+                    Swal.showLoading()
                     let formData = new FormData(document.getElementById('newdev'));
                     axios.post('{{ route('dev.store') }}', formData).then(response => {
                         if (response.data.err == true) {
                             swal({
-                                title: response.msg,
+                                title: response.data.msg,
                                 type: 'warning',
                                 confirmButtonText: 'موافق',
                             });
                         } else {
                             swal({
-                                title: response.msg,
+                                title: response.data.msg,
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });

@@ -12,10 +12,7 @@ class Setting extends Model
 
     public $table = 'setting';
 
-    public $fillable = ['key', 'value'];
+    public $fillable = ['key', 'value', 'value_ar', 'value_fr'];
 
-    public $transcodeColumns = [
-        'key',
-        'value',
-    ];
+
 }

@@ -28,7 +28,7 @@ class ProjectController extends Controller
         try {
             if ($request->has('pdf')) {
                 $pdfname = $this->uploadfiles($request->file('pdf'), 'projects/');
-               
+
             }
             $project = new Project();
             $project->name_ar = $request->name_ar; //
@@ -37,15 +37,15 @@ class ProjectController extends Controller
             $project->description = $request->description; //
             $project->description_ar = $request->description_ar;  //
             $project->description_fr = $request->description_fr; //
-            $project->price = $request->price;  // 
+            $project->price = $request->price;  //
             $project->pay_plan = $request->pay_plan;  //
             $project->code = $request->code;  //
-            $project->region_id = $request->region_id; // 
+            $project->region_id = $request->region_id; //
             $project->area_id = $request->area_id;  //
             $project->vedio_link = $request->vedio_link;
             $project->rooms = $request->rooms;   //
             $project->bedrooms = $request->bedrooms;  //
-            $project->bath = $request->bath;   // 
+            $project->bath = $request->bath;   //
             $project->garage = $request->garage;  //
             $project->type_id = $request->type_id;  //
             $project->status_id = $request->status_id; //
@@ -68,7 +68,7 @@ class ProjectController extends Controller
             for ($r = 0; $r <= count($request->amenitie) - 1; $r++) {
                 AP::create(['project_id' => $project->id, 'amenitie_id' => $request->amenitie[$r]]);
             }
-            
+
 
         } catch (\Exception  $e) {
             DB::rollBack();
@@ -115,18 +115,20 @@ class ProjectController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                $edit = route('projects.edit', $row->id);
+                $actionBtn = '<a href="' . $edit . '" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin.project.index');
+        return view('admin.project.newindex');
     }
 
     public function edit($id)
     {
-        $data = Project::find($id);
+        $project = Project::find($id);
+        return view('admin.project.edit', compact('project'));
     }
 
     public function OneProject($id)
@@ -153,15 +155,15 @@ class ProjectController extends Controller
             $project->description = $request->description; //
             $project->description_ar = $request->description_ar;  //
             $project->description_fr = $request->description_fr; //
-            $project->price = $request->price;  // 
+            $project->price = $request->price;  //
             $project->pay_plan = $request->pay_plan;  //
             $project->code = $request->code;  //
-            $project->region_id = $request->region_id; // 
+            $project->region_id = $request->region_id; //
             $project->area_id = $request->area_id;  //
             $project->vedio_link = $request->vedio_link;
             $project->rooms = $request->rooms;   //
             $project->bedrooms = $request->bedrooms;  //
-            $project->bath = $request->bath;   // 
+            $project->bath = $request->bath;   //
             $project->garage = $request->garage;  //
             $project->type_id = $request->type_id;  //
             $project->status_id = $request->status_id; //

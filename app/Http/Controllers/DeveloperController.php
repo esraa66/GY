@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Developer;
-use Illuminate\Http\Request;
 use Image;
 use DataTables;
+use App\Models\Developer;
+use App\Http\Traits\media;
+use Illuminate\Http\Request;
+
 class DeveloperController extends Controller
 {
+    use media;
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -15,7 +18,8 @@ class DeveloperController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a>';
+                $edit = route('dev.edit', $row->id);
+                $actionBtn = '<a href=" ' . $edit . '" class="edit btn btn-success btn-sm m-1">Edit</a>';
                     $actionBtn .= '<a href="javascript:void(0)" value="' . $row->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
@@ -31,16 +35,14 @@ class DeveloperController extends Controller
             'logo' => 'required',
         ], [
             'name.required' => 'الاسم مطلوب ',
-            'logo.required' => 'الاسم مطلوب ',
+            'logo.required' => ' لوجو المطور مطلوب  ',
         ]);
         if ($request->hasFile('logo')) {
-            $classifiedImg = $request->file('logo');
-            $filename = time() . rand(1, 200);
-            $image = Image::make($classifiedImg)->encode('webp', 90)->resize(700, 600)->save(public_path('images/devs/'  .  $filename . '.webp'));
+            $filename = $this->uploadMedia($request->file('logo'), 'images/devs/', 700, 600);
         }
         $dev = new Developer();
         $dev->name = $request->name;
-        $dev->logo = $filename  . '.webp';
+        $dev->logo = $filename;
 
         $dev->phone = $request->phone;
         $dev->fax   = $request->fax;
@@ -54,17 +56,23 @@ class DeveloperController extends Controller
     public function edit($id)
     {
         $dev =  Developer::find($id);
+        return view('admin.dev.edit', compact('dev'));
     }
 
     public function update(Request $request)
     {
         $dev =  Developer::find($request->id);
         $dev->name = $request->name;
-        $dev->phone = $request->name;
-        $dev->fax   = $request->name;
-        $dev->logo = $request->name;
-        $dev->location = $request->name;
+        $dev->phone = $request->phone;
+        $dev->fax   = $request->fax;
+        if ($request->hasFile('logo')) {
+            $filename = $this->uploadMedia($request->file('logo'), 'images/devs/', 700, 600);
+            $dev->logo = $filename;
+        }
+        $dev->email = $request->email;
+        $dev->site = $request->site;
         $dev->save();
+        return response()->json(['err' => false, 'msg' => ' تم تعديل المطور بنجاح'], 200);
     }
 
     public function delete(Request $request)

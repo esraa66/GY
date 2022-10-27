@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/owl.carousel.min.css')}}">
 
     <link rel="stylesheet" href="{{URL::asset('assets2/css/bootstrap.min.css')}}">
-    {{-- <link rel="stylesheet" href="{{URL::asset('assets2/css/bootstrap.rtl.min.css')}}"> --}}
+    <link rel="stylesheet" href="{{URL::asset('assets2/css/bootstrap.rtl.min.css')}}"> 
     <link rel="stylesheet" href="{{URL::asset('assets2/css/menu.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/slick.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/slider-search2.css')}}">
@@ -691,21 +691,24 @@
                                     <div class="info">
                                         <i class="fa fa-map-marker"
                                            aria-hidden="true"></i>
-                                        <p class="in-p">95 South Park Ave, USA</p>
+                                           <!-- 95 South Park Ave, USA -->
+                                        <p class="in-p">{{ getAddress() }}</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="info">
                                         <i class="fa fa-phone"
                                            aria-hidden="true"></i>
-                                        <p class="in-p">+456 875 369 208</p>
+                                           <!-- +456 875 369 208 -->
+                                        <p class="in-p">{{ getPhones() }}</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="info">
                                         <i class="fa fa-envelope"
                                            aria-hidden="true"></i>
-                                        <p class="in-p ti">support@findhouses.com</p>
+                                           <!-- support@findhouses.com -->
+                                        <p class="in-p ti">{{ getEmail() }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -734,19 +737,19 @@
                     @foreach (\App\Models\Blog::orderByDesc('created_at')->limit(6)->get() as $blog)
                         <div class="col-xl-6 col-md-12 col-xs-12" data-aos="fade-right">
                             <div class="news-item news-item-sm">
-                                <a href="{{ route('blogone',$blog->id) }}" class="news-img-link">
+                                <a href="{{ route('article',$blog->id) }}" class="news-img-link">
                                     <div class="news-item-img">
                                         <img class="resp-img" src="{{ url('/') . '/images/blogs/' . $blog->image}}" alt="blog image">
                                     </div>
                                 </a>
                                 <div class="news-item-text">
-                                    <a href="{{ route('blogone',$blog->id) }}"><h3>{{ $blog->title }}</h3></a>
+                                    <a href="{{ route('article',$blog->id) }}"><h3>{{ $blog->title }}</h3></a>
                                  
                                     <div class="news-item-descr">
                                         <p>{{ $blog->article }}</p>
                                     </div>
                                     <div class="news-item-bottom">
-                                        <a href="{{ route('blogone',$blog->id) }}" class="news-link">Read more...</a>
+                                        <a href="{{ route('article',$blog->id) }}" class="news-link">Read more...</a>
                                         <ul class="action-list">
                                             <li class="action-item"><i class="fa fa-heart"></i> <span>306</span></li>
                                             <li class="action-item"><i class="fa fa-comment"></i> <span>34</span></li>
@@ -759,7 +762,11 @@
                     @endforeach
                     </div>
                 </div>
+                
             </div>
+            <div class="bg-all">
+                    <a href="{{ route('allarticle')}}" class="btn btn-outline-light"> رؤية المزيد  </a>
+                        </div>
         </section>
         <!-- END SECTION BLOG -->
 

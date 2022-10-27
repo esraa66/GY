@@ -53,10 +53,7 @@ function add($row, $values_arr, $lang)
 
 function evaluate($row, $forceToGetArabic = 0)
 {
-
     $locale = new Locale;
-
-
     try {
         $lang = $locale->locale;
         $table = $row->table;
@@ -66,10 +63,7 @@ function evaluate($row, $forceToGetArabic = 0)
         dd($e);
         dd('Transcode Error');
     }
-
     $obj = array_combine($columns, array_fill(0, count($columns), null));
-
-
     $transCodes = \App\Models\Transcode::where('table_', $table)->where('row_', $row_id)->where('lang_', $lang)->get();
     if (!$forceToGetArabic) {
         if ($locale->locale == 'en') {
@@ -250,9 +244,9 @@ function getAppName()
     static $appName;
 
     if (empty($appName)) {
-        $appName = Setting::where('key', '=', 'app_name')->first()->value;
+        $v = 'value_' . getLang();
+        $appName = Setting::where('key', '=', 'app_name')->first()->$v;
     }
-
     return $appName;
 }
 
@@ -302,12 +296,33 @@ function getAddress()
 }
 function getgoals()
 {
-    $t = Setting::where('key', '=', 'goals')->first();
-    $msg = evaluate($t)['value'];
-    return $msg;
+
+    $v = 'value_' . getLang();
+    $goals = Setting::where('key', '=', 'goals')->first()->$v;
+    return $goals;
 }
 function getEmail()
 {
     $t = Setting::where('key', '=', 'email')->first();
-    return $t->value;
+    return $t->value_en;
+}
+
+function get($key)
+{
+    $v = 'value_' . getLang();
+    $value = Setting::where('key', '=', $key)->first()->$v;
+
+    return $value;
+}
+
+function getcon($key)
+{
+    $value = Setting::where('key', '=', $key)->first()->value_en;
+    return $value;
+}
+
+function console($msg)
+{
+    $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+    $out->writeln($msg);
 }

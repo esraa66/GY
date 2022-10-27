@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html >
 
-<head>
+<head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/fontawesome-5-all.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/font-awesome.min.css')}}">
 
+    
 
     @yield('css')
 </head>
@@ -50,8 +51,8 @@
                         <!-- Main Navigation -->
                         <nav id="navigation" class="style-1">
                             <ul id="responsive">
-                                <li><a href="#">Home</a>
-                                    <ul>
+                                <li><a href="{{ route('main') }}">Home</a>
+                                    <!-- <ul>
                                         <li><a href="#">Home Map</a>
                                             <ul>
                                                 <li><a href="index-9.html">Home Map Style 1</a></li>
@@ -96,9 +97,9 @@
                                                     <li><a href="index-14.html">Home Style White</a></li>
                                                 </ul>
                                             </li>
-                                    </ul>
+                                    </ul> -->
                                     </li>
-                                    <li><a href="#">Listing</a>
+                                    <!-- <li><a href="#">Listing</a>
                                         <ul>
                                             <li><a href="#">Listing Grid</a>
                                                 <ul>
@@ -145,68 +146,23 @@
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                     <li><a href="#">Property</a>
                                         <ul>
-                                            <li><a href="single-property-1.html">Single Property 1</a></li>
-                                            <li><a href="single-property-2.html">Single Property 2</a></li>
-                                            <li><a href="single-property-3.html">Single Property 3</a></li>
-                                            <li><a href="single-property-4.html">Single Property 4</a></li>
-                                            <li><a href="single-property-5.html">Single Property 5</a></li>
-                                            <li><a href="single-property-6.html">Single Property 6</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages</a>
-                                        <ul>
-                                            <li><a href="#">Shop</a>
-                                                <ul>
-                                                    <li><a href="shop-with-sidebar.html">Product Sidebar</a></li>
-                                                    <li><a href="shop-full-page.html">Product Fullpage</a></li>
-                                                    <li><a href="shop-single.html">Product Single</a></li>
-                                                    <li><a href="shop-checkout.html">Checkout Page</a></li>
-                                                    <li><a href="shop-order.html">Order Page</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">User Panel</a>
-                                                <ul>
-                                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                                    <li><a href="user-profile.html">User Profile</a></li>
-                                                    <li><a href="my-listings.html">My Properties</a></li>
-                                                    <li><a href="favorited-listings.html">Favorited Properties</a></li>
-                                                    <li><a href="add-property.html">Add Property</a></li>
-                                                    <li><a href="payment-method.html">Payment Method</a></li>
-                                                    <li><a href="invoice.html">Invoice</a></li>
-                                                    <li><a href="change-password.html">Change Password</a></li>
-                                                </ul>
-                                            </li>
-                                             <li><a href="{{route('user.about')}}">About Us</a></li>
-                                            <li><a href="faq.html">Faq</a></li>
-                                            <li><a href="pricing-table.html">Pricing Tables</a></li>
-                                            <li><a href="404.html">Page 404</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                                            <li><a href="under-construction.html">Under Construction</a></li>
-                                            <li><a href="ui-element.html">UI Elements</a></li>
-                                        </ul>
+                                            @foreach(\App\Models\Project::latest()->limit(5)->get() as $project)
+                                                <li><a href="{{ route('project',$project->id) }}">{{ $project -> name}}</a></li>
+                                            @endforeach
+                                        </ul>    
                                     </li>
                                     <li><a href="#">Blog</a>
                                         <ul>
-                                            <li><a href="#">Grid Layout</a>
-                                                <ul>
-                                                    <li><a href="blog-full-grid.html">Full Grid</a></li>
-                                                    <li><a href="blog-grid-sidebar.html">With Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">List Layout</a>
-                                                <ul>
-                                                    <li><a href="blog-full-list.html">Full List</a></li>
-                                                    <li><a href="blog-list-sidebar.html">With Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                            @foreach(\App\Models\Blog::latest()->limit(5)->get() as $blog)
+                                                <li><a href="{{ route('article',$blog->id) }}">{{ $blog -> title }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
+                                    
+                                    <li><a href="{{route('user.about')}}">About us</a></li>
                                     <li><a href="contact-us.html">Contact</a></li>
                                     <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                     <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
@@ -459,8 +415,8 @@
                                             <label>Password *</label>
                                             <input name="password" onClick="this.select()" type="password" onClick="this.select()" value="" required>
 
-                                                <label >Project Personal Image *</label>
-                                                <input type="file"  name="photo" value="{{old('photo')}}"  placeholder="Enter your project Main images" required>
+                                            <label >Project Personal Image *</label>
+                                            <input type="file"  name="photo" value="{{old('photo')}}"  placeholder="Enter your project Main images" required>
                                             <button type="submit" class="log-submit-btn"><span>Register</span></button>
                                         </form>
                                     </div>
@@ -575,7 +531,7 @@
         <script src="{{URL::asset('assets2/js/forms-2.js')}}"></script>
         <script src="{{URL::asset('assets2/js/color-switcher.js')}}"></script>
         <script src="{{URL::asset('assets2/js/search.js')}}"></script>
-
+    
 
         <!-- Slider Revolution scripts -->
         <script src="{{URL::asset('assets2/revolution/js/jquery.themepunch.tools.min.js')}}"></script>

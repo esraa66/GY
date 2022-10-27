@@ -34,12 +34,24 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/test', function () {
     return view('test');
 });
+
+
 Route::post('/post', [App\Http\Controllers\HomeController::class, 'storTest'])->name('teststore');
 Route::get('/project/{id}', [ProjectController::class, 'OneProject'])->name('project');
 Route::get('/blog/{id}', [BlogController::class, 'oneBlog'])->name('blogone');
 Route::post('/reqContact', [RequestController::class, 'store'])->name('reqcontact');
 Route::get('/allprojects', [ProjectController::class, 'allprojects'])->name('allprojects');
 Route::get('/filterLocation/{id}', [ProjectController::class, 'filterLocation'])->name('filterLocation');
+
+
+
+Route::get('/allarticle', [BlogController::class, 'allarticle'])->name('allarticle');
+Route::get('/article/{id}', [BlogController::class, 'OneArticle'])->name('article');
+Route::post('/comment/{id}', [CommentController::class, 'storecomment'])->name('storecomment');
+
+
+
+
 
 Route::get('/locale/{lang}', function ($lang) {
     \Session(['locale' => $lang]);

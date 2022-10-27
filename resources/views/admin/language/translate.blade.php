@@ -71,7 +71,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     @foreach($lang_data as $count=>$language)
+                                    @foreach($lang_data as $count=>$language)
                                     <tr id="lang-{{$language['key']}}">
                                         <td>{{$count+1}}</td>
                                         <td>
@@ -239,39 +239,20 @@
     </script> --}}
     <script>
 function update_lang(key, value) {
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            //     }
-            // });
-            // $.ajax({
-            //     url: ,
-            //     method: 'POST',
 
-            //     // beforeSend: function () {
-            //     //     $('#loading').show();
-            //     // },
-            //     // success: function (response) {
-            //     //     swal({
-            //     //                 title:  'asassa',
-            //     //                 type: 'success',
-            //     //                 confirmButtonText: 'موافق',
-            //     //         });
-            //     // },
-            //     complete: function () {
-            //         $('#loading').hide();
-            //     },
-            // });
             data =  {
                     key: key,
                     value: value
                 },
+                // $('#loading').show();
             axios.post("{{route('translate_submit',[$lang])}}", data).then(response => {
+                   $('#loading').hide();
                             swal({
                                 title: 'sdsdd',
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });
+
                     }).catch(response => {
                         swal({
                             title: response.response.message,
@@ -279,7 +260,6 @@ function update_lang(key, value) {
                             confirmButtonText: 'موافق',
                         });
                     });
-
             };
 
 

@@ -100,7 +100,31 @@ class SettingController extends Controller
     }
     public function index(Request $request)
     {
-        $settings = Setting::pluck('value', 'key')->toArray();
+        $settings = Setting::pluck('value_en', 'key')->toArray();
         return view('admin.setting.index', compact('settings'));
     }
+
+    public function updateOne(Request $request)
+    {
+        Setting::where('id', '=', $request->id)->first()->update([
+            'value_en' => $request->value,
+            'value_ar' => $request->value_ar,
+            'value_fr' => $request->value_fr,
+        ]);
+        return response()->json(['err' => false], 200);
+    }
+    public function translate($lang)
+    {
+        $full_data = include(base_path('lang/' . $lang . '/auth.php'));
+        $lang_data = [];
+        ksort($full_data);
+        foreach ($full_data as $key => $data) {
+            array_push($lang_data, ['key' => $key, 'value' => $data]);
+        }
+        // return $lang_data;
+        return view('admin.setting.langindex', compact('lang', 'lang_data'));
+    }
+    // public function updatemedia(Request $request)
+    // {
+    // }
 }

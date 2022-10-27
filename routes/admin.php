@@ -37,11 +37,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::any('login', [AdminController::class, 'login'])->name('alogin');
     Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('lang/{lang}', [HomeController::class, 'translate']);
         Route::post('trans/{lang}', [HomeController::class, 'translate_submit'])->name('translate_submit');
         Route::group(['prefix' => 'developers', 'as' => 'dev.'], function () {
             Route::get('/', [DeveloperController::class, 'index'])->name('index');
+            Route::get('/edit/{id}', [DeveloperController::class, 'edit'])->name('edit');
             Route::post('/store', [DeveloperController::class, 'store'])->name('store');
+            Route::post('/update', [DeveloperController::class, 'update'])->name('update');
             Route::post('/delete', [DeveloperController::class, 'delete'])->name('delete');
         });
         Route::group(['prefix' => 'projects', 'as' => 'projects.'], function () {
@@ -50,6 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
             ])->name('create');
             Route::post('/store', [ProjectController::class, 'store'])->name('store');
             Route::get('/', [ProjectController::class, 'index'])->name('index');
+            Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
         });
         Route::group(['prefix' => 'type', 'as' => 'type.'], function () {
             Route::get('/', [TypeController::class, 'index'])->name('index');
@@ -71,11 +73,16 @@ Route::group(['prefix' => 'admin'], function () {
         });
         Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
             Route::get('/', [SettingController::class, 'index'])->name('index');
+            Route::post('/update', [SettingController::class, 'updateOne'])->name('update');
+            Route::get('lang/{lang}', [SettingController::class, 'translate'])->name('lang');
+
         });
         Route::group(['prefix' => 'blogs', 'as' => 'blogs.'], function () {
             Route::get('/', [BlogController::class, 'index'])->name('index');
             Route::post('/store', [BlogController::class, 'store'])->name('store');
             Route::post('/delete', [BlogController::class, 'delete'])->name('delete');
+            Route::get('/edit/{id}', [BlogController::class, 'edit'])->name('edit');
+            Route::post('/update', [BlogController::class, 'update'])->name('update');
         });
         Route::group(['prefix' => 'area', 'as' => 'area.'], function () {
             Route::get('/create', [AreaController::class, 'create'])->name('create');
