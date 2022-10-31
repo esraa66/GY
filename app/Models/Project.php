@@ -75,6 +75,7 @@ class Project extends Model
 
     public function plans()
     {
+        //$this->hasMany(Template::class, 'project_id')
 
         return $this->hasMany(Template::class, 'project_id');
     }
@@ -84,6 +85,18 @@ class Project extends Model
         return $this->hasMany(AP::class, 'project_id');
     }
 
+    
+
+    public function advgarr()
+    {
+        $advantegs = $this->amenitie->toArray();
+        $advantegsarr=[];
+        foreach($advantegs as $advanteg)
+        {
+            $advantegsarr[]=$advanteg['amenitie_id'];
+        }
+        return $advantegsarr;
+    }
 
     public function devolper()
     {

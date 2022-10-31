@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/store', [ProjectController::class, 'store'])->name('store');
             Route::get('/', [ProjectController::class, 'index'])->name('index');
             Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [ProjectController::class, 'update'])->name('update');
         });
         Route::group(['prefix' => 'type', 'as' => 'type.'], function () {
             Route::get('/', [TypeController::class, 'index'])->name('index');

@@ -15,4 +15,7 @@ class Template extends Model
         'name',
         'image'
     ];
+
+
+    
 }
