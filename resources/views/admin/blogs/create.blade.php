@@ -238,7 +238,6 @@
                                 }
 
                             })
-
                         }
                     })
                     // console.log($(this).attr("value"));

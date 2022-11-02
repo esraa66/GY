@@ -85,11 +85,16 @@ Version      : 1.2
 /*-----------------------------------*/
 /*------ 1. TYPOGRAPHY ------*/
 /*-----------------------------------*/
+
+
+
 html {
   font-size: 15px;
+ 
 }
 
 body {
+  
   font-family: 'Lato', sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -186,7 +191,14 @@ h5 {
   position: absolute;
   background-color: #FF385C;
 }
-
+.homepage-9 .featured .button-effect .btn{
+  position: relative !important;
+}
+.homepage-9 .featured .button-effect i:before{
+  position: absolute !important;
+  top: 15px;
+  left: 10px;
+}
 .section-title h3 {
   font-size: 18px;
   color: #111;
@@ -2068,7 +2080,7 @@ section.recently.portfolio {
 }
 
 ul.slick-dots {
-  margin-top: 20px;
+  margin-top:0px;
   list-style-type: disc;
 }
 
@@ -4740,7 +4752,7 @@ section.counterup {
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #FF385C;
+  background-color: #007bff;
   content: " ";
   width: 50px;
   margin-top: .5rem;
@@ -4805,7 +4817,7 @@ section.counterup {
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #FF385C;
+  background-color: #0d6efd;
   content: " ";
   width: 50px;
   margin-top: .5rem;
@@ -4898,7 +4910,7 @@ section.counterup {
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #FF385C;
+  background-color: #0d6efd;
   content: " ";
   width: 50px;
   margin-top: .5rem;
@@ -4939,7 +4951,7 @@ section.counterup {
 .first-footer .bloq-email .email input[type="submit"] {
   border: 0px;
   padding: .8rem;
-  background: #FF385C;
+  background: #007bff;
   color: #fff;
   text-transform: uppercase;
   font-weight: bold;
@@ -5096,7 +5108,7 @@ element.style {
   right: 1rem;
   font-size: 1.5rem;
   font-weight: 500;
-  background: #FF385C;
+  background: #0056b3;
   padding: .9rem;
   color: #fff;
   border-radius: 5px;
@@ -10623,7 +10635,7 @@ a.button {
 
 .homepage-6 .portfolio .homes-content .homes-list li,
 .hmp7 .portfolio .homes-content .homes-list li {
-  width: 33.3%;
+  /* width: 33.3%; */
 }
 
 .hmp7 .portfolio .homes-content .homes-list li i {
@@ -16722,6 +16734,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 .wprt-image-video.w50.pro {
   margin-bottom: 30px !important;
+  position: relative;
 }
 
 .inner-pages .blog .blog-info.details h4,

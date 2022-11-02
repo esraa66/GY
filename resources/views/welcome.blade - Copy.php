@@ -26,10 +26,6 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/search-form.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/search.css')}}">
 
-    @if(getLang() == 'ar' )
-    <link rel="stylesheet" href="{{URL::asset('assets2/css/rtl.css')}}">
-    @endif 
-
 @endsection
 
 @section('content')
@@ -528,16 +524,9 @@
                                                class="homes-img">
                                                 <div class="homes-tag button alt featured">Featured</div>
                                                 <div class="homes-tag button alt sale">For Sale</div>
-                                                <!-- <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}"
+                                                <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}"
                                                      alt="{{ $pro->name() }}"
-                                                     class="img-responsive" > -->
-                                                     <div style="
-                                                         height: 350px;
-                                                         background-repeat: no-repeat !important;
-                                                         background-position: center;
-                                                         background-size: cover;
-                                                         background:url({{ url('/') . '/images/projects/' . $pro->image[0]->name }})"></div>
-                                                     
+                                                     class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -602,7 +591,7 @@
                         @endforeach
                     </div>
                      <div class="bg-all">
-                    <a href="{{ route('allprojects')}}" class="btn btn-outline-light test"> {{getLang()}} رؤية المزيد  </a>
+                    <a href="{{ route('allprojects')}}" class="btn btn-outline-light"> رؤية المزيد  </a>
                         </div>
                 </div>
             </div>
@@ -615,7 +604,7 @@
                     <h2><span>Most Popular </span>Places</h2>
                     <p>Explore the world of real estate.</p>
                 </div>
-                <div class="row d-flex justify-content-center">
+                <div class="row">
                     @foreach (\App\Models\Location::orderByDesc('created_at')->limit(10)->get() as $lo )
                     <div class="col-lg-3 col-md-6 pr-1"
                          data-aos="fade-right">

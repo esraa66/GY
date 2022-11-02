@@ -16,4 +16,10 @@ class Area extends Model
     public $transcodeColumns = [
         'area',
     ];
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'region_id');
+    }
+    
 }
