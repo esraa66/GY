@@ -1,4 +1,6 @@
 @extends('layouts.master')
+
+<title>{{getAppName()}}    - الايجار </title>
 @section('css')
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -19,64 +21,62 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto"> المشاريع </h4>
-
+                <h4 class="content-title mb-0 my-auto">  الفواتير </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                    فواتير الايجار </span>
             </div>
         </div>
-        <div class="d-flex my-xl-auto right-content">
 
-
-            <div class="pr-1 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
-            </div>
-
-        </div>
     </div>
     <!-- breadcrumb -->
 @endsection
 @section('content')
-    <!-- row -->
-    <div id='blogId'>
-        <div>
 
-            <div class="row">
-                    <div class="col-xl-12">
+
+
+
+    <!--div-->
+    <div class="col-xl-12">
+
+        <div class="card mg-b-20">
+            <div class="card-header pb-0">
+                <div class="d-flex justify-content-between">
+                    <h4 class="card-title mg-b-0"> فواتير </h4>
+                    <i class="mdi mdi-dots-horizontal text-gray"></i>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
                     <div class="card">
-                        <div class="card-header pb-0">
-                            <div class="d-flex justify-content-between">
-                                <h4 class="card-title mg-b-0"> المشاريع </h4>
-                                <i class="mdi mdi-dots-horizontal text-gray"></i>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table text-md-nowrap" id="type">
-                                    <thead>
-                                        <tr>
-                                            <th class="wd-15p border-bottom-0"> id</th>
+                    </div>
+                    <table  id="bills" class="table key-buttons text-md-nowrap">
+                        <thead>
+                            <tr>
+
+                             <th class="wd-15p border-bottom-0"> id</th>
                                             <th class="wd-15p border-bottom-0"> name </th>
                                             <th class="wd-15p border-bottom-0"> action </th>
                                             <th class="wd-15p border-bottom-0"> time </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                            <th class="wd-15p border-bottom-0"> time </th>
+                                            <th class="wd-15p border-bottom-0"> time </th>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
+                            </tr>
+                        </thead>
 
-            <!-- row closed -->
+                        <tbody>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <!-- Container closed -->
     </div>
-    <!-- main-content closed -->
-@endsection
 
+
+@endsection
 @section('js')
+    <!-- Internal Data tables -->
     <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
@@ -103,15 +103,19 @@
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
 
-    @include('vue')
-    <script>
+    <script src="{{ URL::asset('js/print.js') }}"></script>
+    <script src="{{ URL::asset('js/axios.min.js') }}"></script>
+
+
+
+      <script>
          $(function() {
-            var table = $('#type').DataTable({
+            var table = $('#bills').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url:"{{ route('projects.index') }}",
+                    url:"{{ route('requests.index') }}",
                     data: function (d) {
                         }
                     },
@@ -126,19 +130,27 @@
                         name: 'name',
                     },
                     {
+                        data: 'email',
+                        name: 'email',
+                    },
+                    {
+                        data: 'phone',
+                        name: 'phone',
+                    },
+                    {
+                        data: 'msg',
+                        name: 'msg',
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: true,
                         searchable: true
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
                     }
                 ]
             })
 
-            $('#type tbody').on('click', '.delete', function() {
+            $('#bills tbody').on('click', '.delete', function() {
                     var value = $(this).attr("value");
                     Swal.fire({
                         title: ' هل انت متأكد من حذف ' ,

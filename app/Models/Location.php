@@ -15,9 +15,12 @@ class Location extends Model
 
     public $transcodeColumns = [
         'location',
-        
-    ];
 
+    ];
+    public function area()
+    {
+        return $this->hasMany(Area::class, 'region_id');
+    }
 
 
 }

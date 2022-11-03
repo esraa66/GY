@@ -41,8 +41,7 @@
                                             <h2> لغات التشغيل  </h2>
                                     </div>
                                      <div class="col-2">
-
-                                    <a hreaf='{{route('setting.lang','ar') }}' class="btn btn-primary mt-3 mb-0">  عربي</a>
+                                        <a onclick="location.href='{{route('setting.lang','ar') }}'"  class="btn btn-primary mt-3 mb-0">  عربي</a>
                                     </div>
                                      <div class="col-2">
                                     <button type="button"  class="btn btn-primary mt-3 mb-0"> انجلش</button>

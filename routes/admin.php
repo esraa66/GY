@@ -9,7 +9,9 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DeveloperController;
 
 /*
@@ -63,7 +65,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/', [TypeController::class, 'index'])->name('index');
         });
         Route::group(['prefix' => 'location', 'as' => 'location.'], function () {
-            Route::get('/', [TypeController::class, 'index'])->name('index');
+            Route::get('/', [LocationController::class, 'index'])->name('index');
+            Route::get('/edit/{id}', [LocationController::class, 'edit'])->name('edit');
+            Route::post('store', [LocationController::class, 'store'])->name('store');
+            Route::post('update', [LocationController::class, 'update'])->name('update');
+            Route::post('delete', [LocationController::class, 'delete'])->name('delete');
         });
         Route::group(['prefix' => 'status', 'as' => 'status.'], function () {
             Route::get('/', [TypeController::class, 'index'])->name('index');
@@ -88,6 +94,9 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/create', [AreaController::class, 'create'])->name('create');
             Route::get('/store', [AreaController::class, 'store'])->name('store');
             Route::get('/{id}', [AreaController::class, 'getArea'])->name('getarea');
+        });
+        Route::group(['prefix' => 'requsts', 'as' => 'requests.'], function () {
+            Route::get('/', [RequestController::class, 'index'])->name('index');
         });
     });
 });

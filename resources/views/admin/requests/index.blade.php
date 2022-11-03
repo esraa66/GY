@@ -1,25 +1,28 @@
 @extends('layouts.master')
 @section('css')
-    <!-- Internal Data table css -->
-    <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <!--- Internal Select2 css-->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <!---Internal Owl Carousel css-->
-    <link href="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
-    <!---Internal  Multislider css-->
-    <link href="{{ URL::asset('assets/plugins/multislider/multislider.css') }}" rel="stylesheet">
-    <!--- Select2 css -->
+    <!--- Internal Select2 css-->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!---Internal Fileupload css-->
+    <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
+    <!---Internal Fancy uploader css-->
+    <link href="{{ URL::asset('assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
+    <!--Internal Sumoselect css-->
+    <link rel="stylesheet" href="{{ URL::asset('assets/plugins/sumoselect/sumoselect-rtl.css') }}">
+    <!--Internal  TelephoneInput css-->
+    <link rel="stylesheet" href="{{ URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
+    <link href="{{URL::asset('assets/plugins/quill/quill.snow.css')}}" rel="stylesheet">
+<link href="{{URL::asset('assets/plugins/quill/quill.bubble.css')}}" rel="stylesheet">
+<link href="node_modules/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="node_modules/froala-editor/js/froala_editor.pkgd.min.js"></script>
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto"> المشاريع </h4>
+                <h4 class="content-title mb-0 my-auto"> طلبات التواصل  </h4>
 
             </div>
         </div>
@@ -44,7 +47,7 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title mg-b-0"> المشاريع </h4>
+                                <h4 class="card-title mg-b-0"> طلبات التواصل  </h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
                         </div>
@@ -56,6 +59,8 @@
                                             <th class="wd-15p border-bottom-0"> id</th>
                                             <th class="wd-15p border-bottom-0"> name </th>
                                             <th class="wd-15p border-bottom-0"> action </th>
+                                            <th class="wd-15p border-bottom-0"> time </th>
+                                            <th class="wd-15p border-bottom-0"> time </th>
                                             <th class="wd-15p border-bottom-0"> time </th>
                                         </tr>
                                     </thead>
@@ -77,32 +82,38 @@
 @endsection
 
 @section('js')
+    <!--Internal  Select2 js -->
+    <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
+    <!-- Internal Jquery.steps js -->
+    <script src="{{ URL::asset('assets/plugins/jquery-steps/jquery.steps.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/parsleyjs/parsley.min.js') }}"></script>
+    <!--Internal  Form-wizard js -->
+    <script src="{{ URL::asset('assets/js/form-wizard.js') }}"></script>
+    <!--Internal  Datepicker js -->
+    <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+    <!--Internal Fileuploads js-->
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+    <!--Internal Fancy uploader js-->
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    <!--Internal  Form-elements js-->
+    <script src="{{ URL::asset('assets/js/advanced-form-elements.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/select2.js') }}"></script>
+    <!--Internal Sumoselect js-->
+    <script src="{{ URL::asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+        <script src="{{URL::asset('assets/plugins/sumoselect/jquery.sumoselect.js')}}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
-    <!--Internal  Datatable js -->
-    <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
-    <!--Internal  Datepicker js -->
-    <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
-    <!-- Internal Select2 js-->
-    <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
-    <!-- Internal Modal js-->
-    <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
-
+    <!--Internal quill js -->
+<script src="{{URL::asset('assets/plugins/quill/quill.min.js')}}"></script>
+<!-- Internal Form-editor js -->
+<script src="{{URL::asset('assets/js/form-editor.js')}}"></script>
     @include('vue')
     <script>
          $(function() {
@@ -111,7 +122,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url:"{{ route('projects.index') }}",
+                    url:"{{ route('requests.index') }}",
                     data: function (d) {
                         }
                     },
@@ -126,14 +137,22 @@
                         name: 'name',
                     },
                     {
+                        data: 'email',
+                        name: 'email',
+                    },
+                    {
+                        data: 'phone',
+                        name: 'phone',
+                    },
+                    {
+                        data: 'msg',
+                        name: 'msg',
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: true,
                         searchable: true
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
                     }
                 ]
             })

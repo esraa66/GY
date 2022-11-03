@@ -11,9 +11,16 @@ class Area extends Model
 
     public $table = 'area';
 
-    public $fillable = ['area', 'location_id'];
+    public $fillable = ['area', 'region_id'];
 
     public $transcodeColumns = [
         'area',
     ];
+
+    public function location()
+    {
+
+        return $this->belongsTo(Location::class, 'region_id');
+    }
+
 }

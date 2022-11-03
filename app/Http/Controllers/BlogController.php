@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Traits\media;
-use App\Models\Blog;
-use Illuminate\Http\Request;
 use Image;
 use DataTables;
+use App\Models\Blog;
+use App\Models\Comment;
+use App\Http\Traits\media;
 use Laravel\Ui\Presets\Vue;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {

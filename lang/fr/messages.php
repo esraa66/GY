@@ -8,7 +8,7 @@ return [
     'About Us' => 'About Us',
     'Contact' => 'Contact',
 
-    'Find Your Dream Home' => 'Find Your Dream Home',  
+    'Find Your Dream Home' => 'Find Your Dream Home',
     'We Have Over Million Properties For You' => 'We Have Over Million Properties For You' ,
 
     'For Sale' => 'For Sale' ,
@@ -28,8 +28,8 @@ return [
     'Microwave  Washer' => 'Microwave  Washer' ,
     'Refrigerator' => 'Refrigerator' ,
     'Outdoor Shower' => 'Outdoor Shower' ,
- 
-    'Properties For Sale' => 'Properties For Sale' ,          
+
+    'Properties For Sale' => 'Properties For Sale' ,
     'We provide full service at every step.' => 'We provide full service at every step.' ,
     'Featured' => 'Featured' ,
     'See More' => 'See More' ,
@@ -72,6 +72,8 @@ return [
     'BLOG DETAILS' => 'BLOG DETAILS' ,
     'Leave a Comment' => 'Leave a Comment' ,
     'Submit Comment' => 'Submit Comment' ,
-    
-    
+      'Name_ar' => 'Submit Comment',
+    'Name_fr' => 'Submit Comment',
+    'Name_en' => 'Submit Comment',
+
 ];

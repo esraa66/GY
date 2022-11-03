@@ -115,7 +115,7 @@ class SettingController extends Controller
     }
     public function translate($lang)
     {
-        $full_data = include(base_path('lang/' . $lang . '/auth.php'));
+        $full_data = include(base_path('lang/' . $lang . '/messages.php'));
         $lang_data = [];
         ksort($full_data);
         foreach ($full_data as $key => $data) {
