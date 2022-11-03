@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Traits\media;
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Image;
 use DataTables;

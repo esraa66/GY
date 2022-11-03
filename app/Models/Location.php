@@ -18,6 +18,9 @@ class Location extends Model
         
     ];
 
-
+    public function area()
+    {
+        return $this->hasMany(Area::class, 'region_id');
+    }
 
 }

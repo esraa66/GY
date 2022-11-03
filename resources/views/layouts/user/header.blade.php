@@ -266,7 +266,7 @@
                     <!-- Right Side Content / End -->
 
                     <!-- lang-wrap-->
-                    <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
+                    <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex" onClick="">
                         <div class="lang-wrap">
                             <div class="show-lang"><span><i class="fas fa-globe-americas"></i><strong>ENG</strong></span><i class="fa fa-caret-down arrlan"></i></div>
                             <ul class="lang-tooltip lang-action no-list-style">

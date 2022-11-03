@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/fontawesome-5-all.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/font-awesome.min.css')}}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
 
     @yield('css')
@@ -30,7 +30,7 @@
         <!-- START SECTION HEADINGS -->
         <!-- Header Container
         ================================================== -->
-        <header id="header-container">
+        <header id="header-container" >
             <!-- Header -->
             <div id="header">
                 <div class="container container-header">
@@ -174,7 +174,8 @@
                     <!-- Right Side Content / End -->
                     @auth
      <!-- Right Side Content / End -->
-                    <div class="header-user-menu user-menu add">
+     
+                    <div class="header-user-menu user-menu add ">
                         <div class="header-user-name">
                             <span><img src="{{ asset('/attachments/users/'. Auth::user()->photo ) }}" alt=""></span>{{Auth::user()->name}}
                         </div>
@@ -192,6 +193,7 @@
 
                         </ul>
                     </div>
+                    
                     <!-- Right Side Content / End -->
                     @else
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
@@ -205,7 +207,7 @@
                     @endauth
 
                     <!-- lang-wrap-->
-                    <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
+                    <div onClick="show()" id="Active" class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
                         <div class="lang-wrap">
                             <div class="show-lang"><span><i class="fas fa-globe-americas"></i><strong>{{ getLang() }}</strong></span><i class="fa fa-caret-down arrlan"></i></div>
                             <ul class="lang-tooltip lang-action no-list-style">
@@ -718,7 +720,20 @@
 
 
 
-
+<script>
+    let active =document.getElementById("Active");
+    let x=1;
+    function show(){
+        if(x){
+        active.classList.add("active");
+        x--
+        }else{
+        active.classList.remove("active");
+        x++
+        }
+        
+    }
+</script>
 </body>
 
 </html>

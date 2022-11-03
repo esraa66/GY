@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/store', [ProjectController::class, 'store'])->name('store');
             Route::get('/', [ProjectController::class, 'index'])->name('index');
             Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [ProjectController::class, 'update'])->name('update');
         });
         Route::group(['prefix' => 'type', 'as' => 'type.'], function () {
             Route::get('/', [TypeController::class, 'index'])->name('index');
@@ -85,8 +86,13 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/update', [BlogController::class, 'update'])->name('update');
         });
         Route::group(['prefix' => 'area', 'as' => 'area.'], function () {
+            Route::get('/', [AreaController::class, 'index'])->name('index');
             Route::get('/create', [AreaController::class, 'create'])->name('create');
-            Route::get('/store', [AreaController::class, 'store'])->name('store');
+            Route::post('/store', [AreaController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [AreaController::class, 'edit'])->name('edit');
+            Route::post('/update', [AreaController::class, 'update'])->name('update');
+            Route::post('/delete', [AreaController::class, 'delete'])->name('delete');
+            
             Route::get('/{id}', [AreaController::class, 'getArea'])->name('getarea');
         });
     });

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/slick.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/styles.css')}}">
     <link rel="stylesheet" id="color" href="{{URL::asset('assets2/css/default.css')}}">
-
+    
 @endsection
 
 
@@ -669,7 +669,13 @@
                                                 <div class="homes-tag button alt featured">Featured</div>
                                                 <div class="homes-tag button alt sale">For Sale</div>
                                                 <div class="homes-price">$ {{ $pro->price }}</div>
-                                                <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}" alt="{{ $pro->name() }}" class="img-responsive">
+                                                <!-- <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}" alt="{{ $pro->name() }}" class="img-responsive"> -->
+                                                <div style="
+                                                         height: 350px;
+                                                         background-repeat: no-repeat !important;
+                                                         background-position: center;
+                                                         background-size: cover;
+                                                         background:url({{  url('/') . '/images/projects/' . $pro->image[0]->name }})"></div>
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -720,7 +726,8 @@
         </section>
         <!-- END SECTION PROPERTIES LISTING -->
         <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
-@endsection
+
+        @endsection
 
 @section('js')
 
