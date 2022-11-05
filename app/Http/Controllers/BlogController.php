@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Image;
-use DataTables;
+use App\Http\Traits\media;
 use App\Models\Blog;
 use App\Models\Comment;
-use App\Http\Traits\media;
-use Laravel\Ui\Presets\Vue;
 use Illuminate\Http\Request;
+use Image;
+use DataTables;
 
 class BlogController extends Controller
 {
@@ -55,8 +54,8 @@ class BlogController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                $edit = route('blogs.edit', $row->id);
-                $actionBtn = '<a href="' . $edit . '" class="edit m-1 btn btn-success btn-sm">Edit</a>';
+                    $edit = route('blogs.edit', $row->id);
+                    $actionBtn = '<a href="' . $edit . '" class="edit m-1 btn btn-success btn-sm">Edit</a>';
                     $actionBtn .= '<a href="javascript:void(0)" value="' . $row->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })

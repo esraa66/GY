@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Image;
 use DataTables;
+use Illuminate\Support\Facades\File;
 use App\Models\AP;
 use App\Models\Payment;
 use App\Models\Project;
@@ -26,7 +27,8 @@ class ProjectController extends Controller
     {
         DB::beginTransaction();
         try {
-            if ($request->has('pdf')) {
+            if ($request->has('pdf')) 
+            {
                 $pdfname = $this->uploadfiles($request->file('pdf'), 'projects/');
 
             }
@@ -68,14 +70,17 @@ class ProjectController extends Controller
             for ($r = 0; $r <= count($request->amenitie) - 1; $r++) {
                 AP::create(['project_id' => $project->id, 'amenitie_id' => $request->amenitie[$r]]);
             }
-
-
-        } catch (\Exception  $e) {
+            DB::commit();
+            return response()->json(['err' => false, 'msg' => 'تم الحفظ بنجاح'], 200);
+            //return redirect()->route('projects.index');
+        } 
+        catch (\Exception  $e) 
+        {
             DB::rollBack();
             return response()->json(['msg' => $e->getMessage()], 200);
         }
-        DB::commit();
-        return response()->json(['err' => false, 'msg' => 'تم الحفظ بنجاح'], 200);
+    }    
+        
 
         // $project->status = $;
         // $project->image = $;
@@ -103,11 +108,6 @@ class ProjectController extends Controller
         //     - images
 
 
-
-
-    }
-
-
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -128,89 +128,153 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
-        return view('admin.project.edit', compact('project'));
+        $am = AP::all();
+        $result = json_decode($project->plans, true);
+        return view('admin.project.edit', compact('project','am','result'));
     }
 
     public function OneProject($id)
     {
-
         $project = Project::find($id);
-
         return view('oneProject', compact('project'));
     }
 
     public function update(Request $request)
     {
         DB::beginTransaction();
-        try {
+        try 
+        {    
+            $project =  Project::find($request->id); //
 
-            if ($request->has('pdf')) {
-                $pdfname = $this->uploadfiles($request->file('pdf'), 'projects/');
-                dd($pdfname);
-            }
-            $project =  Project::find($request->id);
             $project->name_ar = $request->name_ar; //
             $project->name = $request->name;   //
             $project->name_fr = $request->name_fr;  //
             $project->description = $request->description; //
             $project->description_ar = $request->description_ar;  //
             $project->description_fr = $request->description_fr; //
-            $project->price = $request->price;  //
-            $project->pay_plan = $request->pay_plan;  //
-            $project->code = $request->code;  //
+            $project->price = $request->price; //
+            $project->bath = $request->bath; //
+            $project->garage = $request->garage; //
+            $project->code = $request->code; //
+            $project->vedio_link = $request->vedio_link;  //
             $project->region_id = $request->region_id; //
-            $project->area_id = $request->area_id;  //
-            $project->vedio_link = $request->vedio_link;
-            $project->rooms = $request->rooms;   //
+            $project->area_id = $request->area_id; //
             $project->bedrooms = $request->bedrooms;  //
-            $project->bath = $request->bath;   //
-            $project->garage = $request->garage;  //
+            $project->rooms = $request->rooms;   //
             $project->type_id = $request->type_id;  //
             $project->status_id = $request->status_id; //
             $project->dev_id = $request->dev_id; //
-            $project->pdf = $pdfname; //
-            $project->save();
+            $project->pay_plan = $request->pay_plan; //
 
-            for ($x = 0; $x <= count($request->pers) - 1; $x++) {
-                Payment::create(['project_id' => $project->id, 'pers' => $request->pers[$x]]);
-            }
-            if ($request->has('image')) {
-                for ($x = 0; $x <= count($request->image) - 1; $x++) {
-                    $filename = $this->uploadManyMedia($request->image[$x], 'images/projects/', $x, 700, 600);
+            if( $request->pay_plan > 0)
+            {
+                $pp = Payment:: where( 'project_id' , $project->id )->get();
+                foreach($pp as  $key=>$item)
+                {
+                    $pay =  Payment:: where( 'id' , $item->id )->first();
+                    $pay->update(['project_id' => $project->id, 'pers' => $request->pers[$key] ]);
                 }
-                ProjectImage::create(['project_id' => $project->id, 'name' => $filename]);
-            }
-            if ($request->has('plan_image')) {
-                $filename = $this->uploadMedia($request->file('plan_image'), 'images/projects/plan/', 700, 600);
-                Template::create(['project_id' => $project->id, 'name' => $request->planName, 'image' => $filename]);
             }
 
-            for ($r = 0; $r <= count($request->amenitie) - 1; $r++) {
-                AP::create(['project_id' => $project->id, 'amenitie_id' => $request->amenitie[$r]]);
+            $project_ani=$project->advgarr();
+            if($project_ani)
+            {
+                for ($r = 0; $r <= count($project_ani) - 1; $r++)
+                {
+                    if( ! $request->amenitie_update )
+                    {
+                        AP::Where ('project_id',$project->id)->delete();
+                    }
+                    else
+                    {
+                        $Check=in_array ($project_ani[$r] , $request->amenitie_update );
+                        if(!$Check)
+                        {
+                           AP::Where('project_id',$project->id && 'amenitie_id',$project_ani[$r])->delete();
+                        }
+                    }   
+                }
             }
 
-            // $Attach = $request->only(['chest_o', 'chest_r', 'flame', 'chest_f', 'medium_l', 'medium_r', 'shoulder_r', 'bracelet', 'legs_l', 'knee', 'points_b', 'sleeve_l', 'pleura', 'shoulder_w']);
+            if( $request->amenitie )
+            {               
+                for ($r = 0; $r <= count($request->amenitie) - 1; $r++)
+                {
+                    AP::create(['project_id' => $project->id, 'amenitie_id' => $request->amenitie[$r]]);
+                }
+            }
 
-            // $newBill->attach()->update($Attach);
-        } catch (\Exception  $e) {
+            if($request->file('pdf'))
+            {
+                if (File::exists('project/' .$project->pdf)) 
+                {
+                    File::delete('project/'.$project->pdf);
+                }
+                $file=$request->file('pdf');
+                $filename=$file->getClientOriginalName();
+                $file->move('project/',$filename);
+                $project->pdf=$filename;
+            }
+
+            if ($request->has('plan_image')) 
+            {
+                $result = json_decode($project->plans, true);
+
+                if (File::exists('images/projects/plan/' .$result[0]["image"])) 
+                {
+                    File::delete('images/projects/plan/'.$result[0]["image"]);
+                }
+                
+                $file=$request->file('plan_image');
+                $filename=$file->getClientOriginalName();
+                $file->move('images/projects/plan/',$filename);
+                
+                $p =  Template:: where( 'project_id' , $project->id )->first();
+                $p -> update(['project_id' => $project->id, 'name' => $request->planName, 'image' => $filename]);
+            }
+
+            if ($request->has('image')) 
+            {
+                $images = ProjectImage::where("project_id",$project->id)->get();
+
+                foreach($images as $img)
+                {
+                    if (File::exists("images/projects/".$img -> name)) 
+                    {
+                        File::delete("images/projects/".$img -> name);
+                        $img->delete();
+                    }
+                }
+                for ($x = 0; $x <= count($request->image) - 1; $x++) 
+                {
+                    $file=$request->image[$x];
+                    $filename=$file->getClientOriginalName();
+                    $file->move('images/projects/',$filename);
+                    $images =  ProjectImage::create(['project_id' => $project->id , 'name' => $filename]);
+                }   
+            }
+            $project->save();
+            DB::commit();
+            return redirect()->route('projects.index');
+        } 
+        catch (\Exception  $e) 
+        {
             DB::rollBack();
             return response()->json(['msg' => $e->getMessage()], 200);
         }
-        DB::commit();
-        return response()->json(['err' => false, 'msg' => 'تم الحفظ بنجاح'], 200);
-    }
 
+    }
+        
+    
     public function allprojects()
     {
 
         $projects = Project::paginate(5);
-
         return view('projects.fullProject', compact('projects'));
     }
 
     public function filterLocation($id)
     {
-
         $projects = Project::where('region_id', $id)->paginate(5);
         return view('projects.fullProject', compact('projects'));
     }

@@ -149,7 +149,7 @@
                                     <span>{{ $r->amenitie->name() }}</span>
                                 </li>
                                 @endforeach
-                                
+
                                 {{-- <li>
                                     <i class="fa fa-check-square" aria-hidden="true"></i>
                                     <span>Balcony</span>
@@ -422,9 +422,9 @@
                                     <div class="widget-boxed-body">
                                         <div class="sidebar-widget author-widget2">
                                             <div class="author-box clearfix">
-                                                <img src="{{url('/') . '/images/devs/' . $project->devolper->logo}}" alt="author-image" class="author__img">
-                                                <h4 class="author__title"> {{ $project->devolper->name }}</h4>
-                                              
+                                                <img src="" alt="author-image" class="author__img">
+                                                <h4 class="author__title"> {{ $project->devolper->name ?? 'غير معروف' }}</h4>
+
                                             </div>
                                             <ul class="author__contact">
                                                 <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>302 Av Park, New York</li>
@@ -669,7 +669,13 @@
                                                 <div class="homes-tag button alt featured">Featured</div>
                                                 <div class="homes-tag button alt sale">For Sale</div>
                                                 <div class="homes-price">$ {{ $pro->price }}</div>
-                                                <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}" alt="{{ $pro->name() }}" class="img-responsive">
+                                                <!-- <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}" alt="{{ $pro->name() }}" class="img-responsive"> -->
+                                                <div style="
+                                                         height: 350px;
+                                                         background-repeat: no-repeat !important;
+                                                         background-position: center;
+                                                         background-size: cover;
+                                                         background:url({{  url('/') . '/images/projects/' . $pro->image[0]->name }})"></div>
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -706,12 +712,12 @@
                                                 <span>2 Garages</span>
                                             </li>
                                         </ul>
-                                       
+
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                           
+
                         </div>
                     </div>
                 </section>
@@ -720,7 +726,8 @@
         </section>
         <!-- END SECTION PROPERTIES LISTING -->
         <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
-@endsection
+
+        @endsection
 
 @section('js')
 

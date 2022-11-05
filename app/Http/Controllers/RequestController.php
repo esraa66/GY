@@ -7,12 +7,8 @@ use Illuminate\Http\Request;
 use DataTables;
 class RequestController extends Controller
 {
-
-
-
     public function store(Request $request)
     {
-
         $new_r = new ModelsRequest();
         $new_r->name = $request->name;
         $new_r->email = $request->email;
@@ -22,7 +18,6 @@ class RequestController extends Controller
 
         return response()->json(['msg' => 'سيتم التواصل معك قريبا شكرا لك '], 200);
     }
-
     public function delete(Request $request)
     {
         $re = ModelsRequest::find($request->id);

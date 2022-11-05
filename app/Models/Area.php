@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model
 {
     use HasFactory;
-
     public $table = 'area';
 
     public $fillable = ['area', 'region_id'];
@@ -19,8 +18,6 @@ class Area extends Model
 
     public function location()
     {
-
         return $this->belongsTo(Location::class, 'region_id');
     }
-
 }
