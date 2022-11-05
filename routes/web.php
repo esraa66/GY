@@ -24,15 +24,13 @@ use App\Http\Controllers\RequestController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('main');
+Route::get('/', [HomeController::class, 'index'])->name('main');
 
 Auth::routes();
 
 Route::post('/editprofile', [HomeController::class, 'editprofile'])->name('user.editprofile');
 Route::get('/about', [HomeController::class, 'about'])->name('user.about');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/test', function () {
     return view('test');
 });
@@ -51,7 +49,8 @@ Route::get('/allarticle', [BlogController::class, 'allarticle'])->name('allartic
 Route::get('/article/{id}', [BlogController::class, 'OneArticle'])->name('article');
 Route::post('/comment/{id}', [CommentController::class, 'storecomment'])->name('storecomment');
 
-
+//search function
+Route::post('/search', [HomeController::class, 'search'])->name('searchProperty');
 
 
 

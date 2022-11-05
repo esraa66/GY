@@ -261,6 +261,7 @@
                     }
                 },
                 saveData: function(e) {
+                   
                     e.preventDefault();
                     this.error = []
                     this.validation(this.name , '  اسم المطور مطلوب    ');
@@ -282,6 +283,7 @@
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });
+                            $('#type').DataTable().draw()
 
                         }
                     }).catch(response => {

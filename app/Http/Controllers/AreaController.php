@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Location;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Traits\media;
+
 use Illuminate\Support\Facades\Auth;
 
 class AreaController extends Controller
@@ -99,7 +100,7 @@ class AreaController extends Controller
 
         return response()->json(['err' => false, 'msg' => ' تم مسح المنطقه '], 200);
     }
-    public function getAreax($id)
+    public function getAreax($id,Request $request)
     {
         $new = new Location();
         $new->location = $request->name;

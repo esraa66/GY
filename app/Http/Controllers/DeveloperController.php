@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Image;
-use DataTables;
+use \Yajra\Datatables\Datatables;
 use App\Models\Developer;
 use App\Http\Traits\media;
 use Illuminate\Http\Request;
@@ -30,6 +30,7 @@ class DeveloperController extends Controller
     }
     public function store(Request $request)
     {
+       
         $validatedData = $request->validate([
             'name' => 'required',
             'logo' => 'required',
