@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Image;
-use DataTables;
+use \Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\File;
 use App\Models\AP;
 use App\Models\Payment;
@@ -140,7 +140,27 @@ class ProjectController extends Controller
     }
 
     public function update(Request $request)
-    {
+    {   
+        
+        
+        $request->validate([
+            'name_ar' => 'required',
+            'name_fr' => 'required',
+            'description' => 'required',
+            'description_ar' => 'required',
+            'description_fr' => 'required',
+            'price' => 'required',
+            'garage' => 'required',
+            'vedio_link' => 'required',
+            'region_id' => 'required',
+            'area_id' => 'required',
+            'bedrooms' => 'required',
+            'type_id' => 'required',
+            'status_id' => 'required',
+            'dev_id' => 'required',
+            'pay_plan' => 'required',
+           
+        ]);
         DB::beginTransaction();
         try 
         {    

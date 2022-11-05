@@ -30,7 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $locations = DB::table('locations')->get();
+        $types=DB::table('type')->get();
+        return view('welcome')->with('locations', $locations)->with('types', $types);
     }
 
     public function storTest(Request $request)
@@ -97,5 +99,25 @@ class HomeController extends Controller
         $full_data[$request['key']] = $request['value'];
         $str = "<?php return " . var_export($full_data, true) . ";";
         file_put_contents(base_path('lang/' . $lang . '/auth.php'), $str);
+    }
+    public function search(Request $request){
+
+        $result=DB::table('projects')
+        ->where('type_id',$request->type)
+        ->where('region_id',$request->location)
+        ->where('name','like',"%{$request->keyword}%")
+        ->first();
+        return redirect()->route('project',['id'=>(int)$result->id]);
+        // $locationID=DB::table('locations')->where('locations.location',$request->location)->get();
+        // $typeID=DB::table('types')->where('types.type',$request->type)->get();
+        // dd($typeID);
+        // $result = DB::table('projects')
+        //     ->join('locations', 'projects.region_id', '=', function($loc){
+        //         $loc->select('locations.id')->where('locations.location','=',$this->request->location);
+        //     })
+            
+        //     ->select('project.name', 'locations.location')
+        //     ->get();
+        //     dd($result);
     }
 }

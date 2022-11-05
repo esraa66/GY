@@ -145,6 +145,7 @@
                     let formData = new FormData(document.getElementById('newdev'));
                         formData.append('id',{!! $dev->id !!})
                     axios.post('{{ route('dev.update') }}', formData).then(response => {
+                        console.log(response);
                         if (response.data.err == true) {
                             swal({
                                 title: response.data.msg,
@@ -160,11 +161,7 @@
 
                         }
                     }).catch(response => {
-                        swal({
-                            title: response.response.message,
-                            type: 'warning',
-                            confirmButtonText: 'موافق',
-                        });
+                        console.log(response);
                     })
                 }
             }
