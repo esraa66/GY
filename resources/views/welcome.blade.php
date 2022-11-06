@@ -580,4 +580,6 @@
             }
         });
     </script>
+    
+    
 @endsection

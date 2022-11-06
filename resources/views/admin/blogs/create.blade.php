@@ -77,7 +77,7 @@
 
                                     <div class="col-lg">
                                         <label class="form-label">article(ar)</label>
-                                        <textarea required="" class="form-control" name="article" placeholder="Textarea" rows="3"></textarea>
+                                        <textarea id="editor" required="" class="form-control" name="article" placeholder="Textarea" rows="3"></textarea>
                                     </div>
                                     <div class="col-lg">
                                         <label class="form-label">article(ar)</label>
@@ -277,5 +277,13 @@
                 }
             }
         });
+    </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
 @endsection

@@ -17,6 +17,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
 
+    <x-rich-text-trix-styles />
+
+    
+
 </head>
 <body>
     <div id="app">
