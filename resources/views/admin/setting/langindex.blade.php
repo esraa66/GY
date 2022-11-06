@@ -31,11 +31,9 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title mg-b-0">SIMPLE TABLE</h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
-                            <p class="tx-12 tx-gray-500 mb-2">Example of Valex Simple Table. <a href="">Learn
-                                    more</a></p>
+                            <p class="tx-12 tx-gray-500 mb-2">  <a href="">  ترجمة الكلمات الرئيسيه في الموقع  </a></p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -158,11 +156,10 @@ function update_lang(key, value) {
             axios.post("{{route('translate_submit',[$lang])}}", data).then(response => {
                    $('#loading').hide();
                             swal({
-                                title: 'sdsdd',
+                                title: 'تم الحفظ بنجاح',
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });
-
                     }).catch(response => {
                         swal({
                             title: response.response.message,

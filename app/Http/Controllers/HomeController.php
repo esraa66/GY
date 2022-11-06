@@ -93,10 +93,11 @@ class HomeController extends Controller
 
     public function translate_submit(Request $request, $lang)
     {
-        $full_data = include(base_path('lang/' . $lang . '/auth.php'));
+        $full_data = include(base_path('lang/' . $lang . '/messages.php'));
         $full_data[$request['key']] = $request['value'];
         $str = "<?php return " . var_export($full_data, true) . ";";
-        file_put_contents(base_path('lang/' . $lang . '/auth.php'), $str);
+        file_put_contents(base_path('lang/' . $lang . '/messages.php'), $str);
+        return response()->json(['err' => false, 'msg' => 'تم التعديل بنجاح']);
     }
     public function search(Request $request){
 

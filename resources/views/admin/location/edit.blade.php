@@ -54,28 +54,18 @@
                                         تعديل مكان رئيسي
                                 </div>
                                 <div class="row row-sm">
-                                    <div class="col-lg-4">
-                                        <label class="form-label">   {{ __('Name_en') }} </label>
-                                        <input required="" class="form-control" name="name" placeholder="Input box"
+                                    <div class="col-lg-6">
+                                        <label class="form-label">  الاسم </label>
+                                        <input required="" class="form-control" name="location" value="{{ $location->location }}"
                                             type="text">
                                     </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label"> {{ __('Name_ar') }} </label>
-                                        <input required="" class="form-control" name="name_ar" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label"> {{ __('Name_fr') }} </label>
-                                        <input required="" class="form-control" name="name_fr" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                        <label class="form-label">Image </label>
+                                    <div class="col-lg-6">
+                                        <label class="form-label"> صوره </label>
                                         <input name='image' multiple class="form-control" required="" type="file">
                                 </div>
-                            <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">Submit</button>
+                                </div>
 
+                            <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0"> حفظ</button>
                             </div>
                         </div>
                     </form>

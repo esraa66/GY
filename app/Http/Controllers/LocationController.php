@@ -22,8 +22,8 @@ class LocationController extends Controller
                     return $count;
                 })
                 ->addColumn('action', function ($row) {
-                    $edit = route('projects.edit', $row->id);
-                    $actionBtn = '<a href="' . $edit . '" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" value="' . $row->id . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                $edit = route('location.edit', $row->id);
+                $actionBtn = '<a href="' . $edit . '" class="edit btn btn-success btn-sm"> تعديل</a> <a href="javascript:void(0)" value="' . $row->id . '" class="delete btn btn-danger btn-sm">حذف  </a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action', 'count'])
@@ -62,9 +62,7 @@ class LocationController extends Controller
     public function update(Request $request)
     {
         $new = Location::find($request->id);
-        $new->location = $request->name;
-        $new->location_ar = $request->name_ar;
-        $new->location_fr = $request->name_fr;
+        $new->location = $request->location;
         if ($request->hasFile('image')) {
             deleteMedia('places/', $new->image);
             $filename = $this->uploadMedia($request->file('image'), 'images/places/', 700, 600);

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-<title>{{getAppName()}}    - الايجار </title>
+<title>{{getAppName()}}   </title>
 @section('css')
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -21,8 +21,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">  الفواتير </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    فواتير الايجار </span>
+                <h4 class="content-title mb-0 my-auto">  طلبات التواصل </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                      </span>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
         <div class="card mg-b-20">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0"> فواتير </h4>
+                    <h4 class="card-title mg-b-0"> طلبات التواصل </h4>
                     <i class="mdi mdi-dots-horizontal text-gray"></i>
                 </div>
             </div>
@@ -52,20 +52,15 @@
                     <table  id="bills" class="table key-buttons text-md-nowrap">
                         <thead>
                             <tr>
-
-                             <th class="wd-15p border-bottom-0"> id</th>
-                                            <th class="wd-15p border-bottom-0"> name </th>
-                                            <th class="wd-15p border-bottom-0"> action </th>
-                                            <th class="wd-15p border-bottom-0"> time </th>
-                                            <th class="wd-15p border-bottom-0"> time </th>
-                                            <th class="wd-15p border-bottom-0"> time </th>
-
+                                            <th class="wd-15p border-bottom-0"> id</th>
+                                            <th class="wd-15p border-bottom-0"> الاسم  </th>
+                                            <th class="wd-15p border-bottom-0"> الايميل </th>
+                                            <th class="wd-15p border-bottom-0"> رقم التليفون </th>
+                                            <th class="wd-15p border-bottom-0"> الرساله </th>
+                                            <th class="wd-15p border-bottom-0"> اجراءات </th>
                             </tr>
                         </thead>
-
                         <tbody>
-
-
                         </tbody>
                     </table>
                 </div>

@@ -32,6 +32,7 @@ class Project extends Model
         'type_id',
         'bedrooms',
         'rooms',
+        'plan',
         'bath',
         'garage'
 
@@ -85,7 +86,7 @@ class Project extends Model
         return $this->hasMany(AP::class, 'project_id');
     }
 
-    
+
 
     public function advgarr()
     {
