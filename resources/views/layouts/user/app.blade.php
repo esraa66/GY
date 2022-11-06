@@ -247,19 +247,19 @@
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                            <p class="in-p">{{ getAddress() }}</p>
+                                            <p class="in-p">{{ getcon('address') }}</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <p class="in-p">{{ getPhones() }}</p>
+                                            <p class="in-p">{{ getcon('phone') }}</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="info">
                                             <i class="fa fa-envelope" aria-hidden="true"></i>
-                                            <p class="in-p ti">{{ getEmail() }}</p>
+                                            <p class="in-p ti">{{ getcon('email') }}</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -270,16 +270,16 @@
                                 <h3>Navigation</h3>
                                 <div class="nav-footer">
                                     <ul>
-                                        <li><a href="index.html">Home One</a></li>
+                                        <li><a href="{{route('main')}}">Home One</a></li>
                                         <li><a href="properties-right-sidebar.html">Properties Right</a></li>
-                                        <li><a href="properties-full-list.html">Properties List</a></li>
+                                        <li><a href="{{route('allprojects')}}">Properties List</a></li>
                                         <li><a href="properties-details.html">Property Details</a></li>
                                         <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
                                     </ul>
                                     <ul class="nav-right">
                                         <li><a href="agent-details.html">Agents Details</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="blog.html">Blog Default</a></li>
+                                        <li><a href="{{route('user.about')}}">About Us</a></li>
+                                        <li><a href="{{route('allarticle')}}">Blog Default</a></li>
                                         <li><a href="blog-details.html">Blog Details</a></li>
                                         <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
                                     </ul>
@@ -343,10 +343,10 @@
                 <div class="container-fluid sd-f">
                     <p>2021 © Copyright - All Rights Reserved.</p>
                     <ul class="netsocials">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                        <li><a href="{{getcon('facebook')}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="{{getcon('twitter')}}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="{{getcon('insta')}}"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="{{getcon('youtube')}}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </div>
