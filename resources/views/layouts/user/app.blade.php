@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html >
 
-<head>  
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/fontawesome-5-all.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
 
     @yield('css')
 </head>
@@ -152,7 +152,7 @@
                                             @foreach(\App\Models\Project::latest()->limit(5)->get() as $project)
                                                 <li><a href="{{ route('project',$project->id) }}">{{ $project -> name}}</a></li>
                                             @endforeach
-                                        </ul>    
+                                        </ul>
                                     </li>
                                     <li><a href="#">Blog</a>
                                         <ul>
@@ -161,7 +161,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    
+
                                     <li><a href="{{route('user.about')}}">About us</a></li>
                                     <li><a href="contact-us.html">Contact</a></li>
                                     <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
@@ -174,7 +174,7 @@
                     <!-- Right Side Content / End -->
                     @auth
      <!-- Right Side Content / End -->
-     
+
                     <div class="header-user-menu user-menu add ">
                         <div class="header-user-name">
                             <span><img src="{{ asset('/attachments/users/'. Auth::user()->photo ) }}" alt=""></span>{{Auth::user()->name}}
@@ -193,7 +193,7 @@
 
                         </ul>
                     </div>
-                    
+
                     <!-- Right Side Content / End -->
                     @else
                     <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
@@ -240,7 +240,7 @@
                                 <a href="index.html" class="logo">
                                     <img src="images/logo-footer.svg" alt="netcom">
                                 </a>
-                                <p>{{ getgoals() }}</p>
+                                <p> {{  get('goals') }} </p>
                             </div>
                             <div class="contactus">
                                 <ul>
@@ -533,7 +533,7 @@
         <script src="{{URL::asset('assets2/js/forms-2.js')}}"></script>
         <script src="{{URL::asset('assets2/js/color-switcher.js')}}"></script>
         <script src="{{URL::asset('assets2/js/search.js')}}"></script>
-    
+
 
         <!-- Slider Revolution scripts -->
         <script src="{{URL::asset('assets2/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
@@ -731,7 +731,7 @@
         active.classList.remove("active");
         x++
         }
-        
+
     }
 </script>
 </body>

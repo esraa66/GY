@@ -18,10 +18,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -107,17 +104,6 @@ class HomeController extends Controller
         ->where('region_id',$request->location)
         ->where('name','like',"%{$request->keyword}%")
         ->first();
-        return redirect()->route('project',['id'=>(int)$result->id]);
-        // $locationID=DB::table('locations')->where('locations.location',$request->location)->get();
-        // $typeID=DB::table('types')->where('types.type',$request->type)->get();
-        // dd($typeID);
-        // $result = DB::table('projects')
-        //     ->join('locations', 'projects.region_id', '=', function($loc){
-        //         $loc->select('locations.id')->where('locations.location','=',$this->request->location);
-        //     })
-            
-        //     ->select('project.name', 'locations.location')
-        //     ->get();
-        //     dd($result);
+        return redirect()->route('project', ['id' => (int)$result->id]);
     }
 }

@@ -27,7 +27,7 @@ class ProjectController extends Controller
     {
         DB::beginTransaction();
         try {
-            if ($request->has('pdf')) 
+            if ($request->has('pdf'))
             {
                 $pdfname = $this->uploadfiles($request->file('pdf'), 'projects/');
 
@@ -73,14 +73,13 @@ class ProjectController extends Controller
             DB::commit();
             return response()->json(['err' => false, 'msg' => 'تم الحفظ بنجاح'], 200);
             //return redirect()->route('projects.index');
-        } 
-        catch (\Exception  $e) 
+        } catch (\Exception  $e)
         {
             DB::rollBack();
             return response()->json(['msg' => $e->getMessage()], 200);
         }
-    }    
-        
+    }
+
 
         // $project->status = $;
         // $project->image = $;
@@ -140,9 +139,9 @@ class ProjectController extends Controller
     }
 
     public function update(Request $request)
-    {   
-        
-        
+    {
+
+
         $request->validate([
             'name_ar' => 'required',
             'name_fr' => 'required',
@@ -159,11 +158,9 @@ class ProjectController extends Controller
             'status_id' => 'required',
             'dev_id' => 'required',
             'pay_plan' => 'required',
-           
         ]);
         DB::beginTransaction();
-        try 
-        {    
+        try {
             $project =  Project::find($request->id); //
 
             $project->name_ar = $request->name_ar; //
@@ -212,12 +209,11 @@ class ProjectController extends Controller
                         {
                            AP::Where('project_id',$project->id && 'amenitie_id',$project_ani[$r])->delete();
                         }
-                    }   
+                    }
                 }
             }
 
-            if( $request->amenitie )
-            {               
+            if( $request->amenitie ) {
                 for ($r = 0; $r <= count($request->amenitie) - 1; $r++)
                 {
                     AP::create(['project_id' => $project->id, 'amenitie_id' => $request->amenitie[$r]]);
@@ -226,7 +222,7 @@ class ProjectController extends Controller
 
             if($request->file('pdf'))
             {
-                if (File::exists('project/' .$project->pdf)) 
+                if (File::exists('project/' . $project->pdf))
                 {
                     File::delete('project/'.$project->pdf);
                 }
@@ -236,56 +232,55 @@ class ProjectController extends Controller
                 $project->pdf=$filename;
             }
 
-            if ($request->has('plan_image')) 
+            if ($request->has('plan_image'))
             {
                 $result = json_decode($project->plans, true);
 
-                if (File::exists('images/projects/plan/' .$result[0]["image"])) 
+                if (File::exists('images/projects/plan/' . $result[0]["image"]))
                 {
                     File::delete('images/projects/plan/'.$result[0]["image"]);
                 }
-                
+
                 $file=$request->file('plan_image');
                 $filename=$file->getClientOriginalName();
                 $file->move('images/projects/plan/',$filename);
-                
+
                 $p =  Template:: where( 'project_id' , $project->id )->first();
                 $p -> update(['project_id' => $project->id, 'name' => $request->planName, 'image' => $filename]);
             }
 
-            if ($request->has('image')) 
+            if ($request->has('image'))
             {
                 $images = ProjectImage::where("project_id",$project->id)->get();
 
                 foreach($images as $img)
                 {
-                    if (File::exists("images/projects/".$img -> name)) 
+                    if (File::exists("images/projects/" . $img->name))
                     {
                         File::delete("images/projects/".$img -> name);
                         $img->delete();
                     }
                 }
-                for ($x = 0; $x <= count($request->image) - 1; $x++) 
+                for ($x = 0; $x <= count($request->image) - 1; $x++)
                 {
                     $file=$request->image[$x];
                     $filename=$file->getClientOriginalName();
                     $file->move('images/projects/',$filename);
                     $images =  ProjectImage::create(['project_id' => $project->id , 'name' => $filename]);
-                }   
+                }
             }
             $project->save();
             DB::commit();
             return redirect()->route('projects.index');
-        } 
-        catch (\Exception  $e) 
+        } catch (\Exception  $e)
         {
             DB::rollBack();
             return response()->json(['msg' => $e->getMessage()], 200);
         }
 
     }
-        
-    
+
+
     public function allprojects()
     {
 

@@ -307,6 +307,15 @@ function getEmail()
     return $t->value_en;
 }
 
+
+function console($msg)
+{
+    $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+    $out->writeln($msg);
+}
+
+
+
 function get($key)
 {
     $v = 'value_' . getLang();
@@ -319,10 +328,4 @@ function getcon($key)
 {
     $value = Setting::where('key', '=', $key)->first()->value_en;
     return $value;
-}
-
-function console($msg)
-{
-    $out = new \Symfony\Component\Console\Output\ConsoleOutput();
-    $out->writeln($msg);
 }
