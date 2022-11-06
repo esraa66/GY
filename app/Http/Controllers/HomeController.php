@@ -29,7 +29,8 @@ class HomeController extends Controller
     {
         $locations = DB::table('locations')->get();
         $types=DB::table('type')->get();
-        return view('welcome')->with('locations', $locations)->with('types', $types);
+        $blogs=DB::table('blogs')->get();
+        return view('welcome')->with('locations', $locations)->with('types', $types)->with('blogs',$blogs);
     }
 
     public function storTest(Request $request)
