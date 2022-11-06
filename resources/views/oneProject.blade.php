@@ -77,19 +77,7 @@
                                         @endforeach
                                         <a class="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                                         <a class="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
-
                                     </div>
-                                    <!-- main slider carousel nav controls -->
-                                    {{-- <ul class="carousel-indicators smail-listing list-inline">
-                                    @foreach ($project->image as $i)
-                                        <li class="list-inline-item @if($loop->index == 0)active  @endif">
-                                            <a id="carousel-selector-0" class="selected" data-slide-to="{{ $i->id}}" data-target="#listingDetailsSlider">
-                                                <img src="{{ url('/') . '/images/projects/' . $i->name }}" class="img-fluid" alt="listing-small">
-                                            </a>
-                                        </li>
-                                        @endforeach
-                                    </ul> --}}
-                                    <!-- main slider carousel items -->
                                 </div>
                                 <div class="blog-info details mb-30">
                                     <h5 class="mb-4">Description</h5>
@@ -366,7 +354,7 @@
                     <aside class="col-lg-4 col-md-12 car">
                         <div class="single widget">
                             <!-- Start: Schedule a Tour -->
-                            
+
                             <!-- End: Schedule a Tour -->
                             <!-- end author-verified-badge -->
                             <div class="sidebar">
@@ -382,15 +370,15 @@
 
                                             </div>
                                             <ul class="author__contact">
-                                               
+
                                                 <li><span class="la la-phone"><i class="fa fa-phone" aria-hidden="true"></i></span> {{ $project->devolper->phone ?? 'غير معروف' }}</li>
                                                 <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="#">{{ $project->devolper->email ?? 'غير معروف' }}</a></li>
                                             </ul>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </aside>

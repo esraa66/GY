@@ -335,11 +335,13 @@ function getblog(){
     $title=DB::table('blogs')
     ->inRandomOrder()
     ->first()->article;
-    return $title;  
+    return $title;
 }
 function getcomment(){
-    $comment=DB::table('comments')
-    ->inRandomOrder()
-    ->first()->comment;
-    return $comment;  
+    // $comment=DB::table('comments')
+    // ->inRandomOrder()
+    // ->first()->comment;
+
+
+    return 'ffd         dffffffffffffffffffffff';
 }

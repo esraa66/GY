@@ -36,7 +36,7 @@
   'Latest News' => 'Latest News',
   'The latest news form real estate.' => 'The latest news form real estate.',
   'Read mores...' => 'Read mores...',
-  'Our Partners' => 'Our Partners',
+    'Our Partners' => ' شركائنا ',
   'The Companies That Represent Us.' => 'The Companies That Represent Us.',
   'Navigation' => 'Navigation',
   'Twitter Feeds' => 'Twitter Feeds',
@@ -65,3 +65,4 @@
   'Name_fr' => 'Submit Comment',
   'Name_en' => 'Submit Comment',
 );
+

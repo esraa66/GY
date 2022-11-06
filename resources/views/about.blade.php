@@ -1,7 +1,5 @@
 @extends('layouts.user.app')
-
 @section('css')
-
 <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{URL::asset('assets2/css/search.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/animate.css')}}">
@@ -25,9 +23,12 @@
     <link rel="stylesheet" href="{{URL::asset('assets2/css/search-form.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets2/css/search.css')}}">
 
-@endsection
+    @if (getLang() == 'ar')
+        <link rel="stylesheet" href="{{ URL::asset('assets2/css/rtl.css') }}">
+    @endif
 
-@section('content')  
+@endsection
+@section('content')
 
         <section class="headings">
             <div class="text-heading text-center">
@@ -37,7 +38,7 @@
                 </div>
             </div>
         </section>
-    
+
         <section class="about-us fh">
             <div class="container">
                 <div class="row">
@@ -69,7 +70,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="how-it-works bg-white-2">
             <div class="container">
                 <div class="sec-title">
@@ -113,7 +114,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="counterup">
             <div class="container">
                 <div class="row">
@@ -156,8 +157,8 @@
                 </div>
             </div>
         </section>
-        
-        
+
+
         <section class="testimonials home18 bg-white">
             <div class="container">
                <div class="sec-title">
@@ -183,124 +184,28 @@
                         </ul>
                         <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
-                    <div class="test-1 pb-0 pt-0">
-                        <img src="{{asset('assets2/images/testimonials/ts-2.jpg')}}" alt="">
-                        <h3 class="mt-3 mb-0">Jhon Morris</h3>
-                        <h6 class="mt-1">Los Angeles</h6>
-                        <ul class="starts text-center mb-2">
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star-o"></i>
-                            </li>
-                        </ul>
-                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
-                    </div>
-                    <div class="test-1 pt-0">
-                        <img src="{{asset('assets2/images/testimonials/ts-3.jpg')}}" alt="">
-                        <h3 class="mt-3 mb-0">Mary Deshaw</h3>
-                        <h6 class="mt-1">Chicago</h6>
-                        <ul class="starts text-center mb-2">
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                        </ul>
-                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
-                    </div>
-                    <div class="test-1 pt-0">
-                        <img src="{{asset('assets2/images/testimonials/ts-4.jpg')}}" alt="">
-                        <h3 class="mt-3 mb-0">Gary Steven</h3>
-                        <h6 class="mt-1">Philadelphia</h6>
-                        <ul class="starts text-center mb-2">
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star-o"></i>
-                            </li>
-                        </ul>
-                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
-                    </div>
-                    <div class="test-1 pt-0">
-                        <img src="{{asset('assets2/images/testimonials/ts-5.jpg')}}" alt="">
-                        <h3 class="mt-3 mb-0">Cristy Mayer</h3>
-                        <h6 class="mt-1">San Francisco</h6>
-                        <ul class="starts text-center mb-2">
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                        </ul>
-                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
-                    </div>
-                    <div class="test-1 pt-0">
-                        <img src="{{asset('assets2/images/testimonials/ts-6.jpg')}}" alt="">
-                        <h3 class="mt-3 mb-0">Ichiro Tasaka</h3>
-                        <h6 class="mt-1">Houston</h6>
-                        <ul class="starts text-center mb-2">
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star-o"></i>
-                            </li>
-                        </ul>
-                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
-                    </div>
+
+
                 </div>
             </div>
         </section>
-        
+
         <div class="partners bg-white-2">
             <div class="container">
                 <div class="sec-title">
-                    <h2><span>Our </span>Partners</h2>
-                    <p>The Companies That Represent Us.</p>
+                    <h2><span> {{ __('messages.Our Partners') }} </h2>
+
                 </div>
                 <div class="owl-carousel style2">
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/11.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/12.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/13.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/14.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/15.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/16.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/17.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/11.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/12.jpg')}}" alt=""></div>
-                    <div class="owl-item"><img src="{{asset('assets2/images/partners/13.jpg')}}" alt=""></div>
+                    @foreach (\App\Models\Developer::all() as $dev)
+                    <div class="owl-item"><img  src="{{ url('/') . '/images/devs/' . $dev->logo }}" alt=""></div>
+                    @endforeach
                 </div>
             </div>
         </div>
-        
-        @endsection
-        @section('js')
 
+        @endsection
+@section('js')
 
         <script src="{{URL::asset('assets2/js/jquery-ui.js')}}"></script>
         <script src="{{URL::asset('assets2/js/tether.min.js')}}"></script>
@@ -344,10 +249,5 @@
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
         <script src="{{URL::asset('assets2/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
         @yield('js')
-    <script>
-        <!-- Date Dropper Script-->
-       
-        <!-- Time Dropper Script-->
-        
 
 @endsection
