@@ -299,7 +299,7 @@ class ProjectController extends Controller
     public function allprojects()
     {
 
-        $projects = Project::paginate(5);
+        $projects = Project::paginate(2);
         return view('projects.fullProject', compact('projects'));
     }
 

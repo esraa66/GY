@@ -68,12 +68,8 @@
                                     <div class="news-item-text details pb-0">
                                         <a href=""><h3>{{ $article->title }}</h3></a>
                                         <div class="dates">
-                                            <span class="date">April 11, 2020 &nbsp;/</span>
-                                            <ul class="action-list pl-0">
-                                                <li class="action-item pl-2"><i class="fa fa-heart"></i> <span>306</span></li>
-                                                <li class="action-item"><i class="fa fa-comment"></i> <span>34</span></li>
-                                                <li class="action-item"><i class="fa fa-share-alt"></i> <span>122</span></li>
-                                            </ul>
+                                            
+                                            
                                         </div>
                                         <div class="news-item-descr big-news details visib mb-0">
                                             <p class="mb-3">{{ $article->article }}</p>
@@ -84,100 +80,8 @@
                                 </div>
                             </div>
                         </div>
-                        <section class="comments"><br>
-                            <h3 class="mb-5">{{ count($article->comments) }} Comments</h3>
-                            @foreach($article->comments as $comment)
-                            <div class="row mb-4">
-                                <ul class="col-12 commented">
-                                    <li class="comm-inf">
-                                        <div class="col-md-2">
-                                            <img src="" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="col-md-10 comments-info">
-                                            <h5 class="mb-1">{{$comment->fname}} {{$comment->lname}}</h5>
-                                            <p class="mb-4">{{ $comment->created_at }}</p>
-                                            <p>{{ $comment->comment }}</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            @endforeach
-                            <!-- <div class="row ml-5">
-                                <ul class="col-12 commented">
-                                    <li class="comm-inf">
-                                        <div class="col-md-2">
-                                            <img src="images/testimonials/ts-5.jpg" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="col-md-10 comments-info">
-                                            <h5 class="mb-1">Mary Tyron</h5>
-                                            <p class="mb-4">Jun 23, 2020</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="row my-4">
-                                <ul class="col-12 commented">
-                                    <li class="comm-inf">
-                                        <div class="col-md-2">
-                                            <img src="images/testimonials/ts-6.jpg" class="img-fluid" alt="">
-                                        </div>
-                                        <div class="col-md-10 comments-info no-mb">
-                                            <h5 class="mb-1">Leo Williams</h5>
-                                            <p class="mb-4">Jun 23, 2020</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div> -->
-                        </section>
-                        <section class="leve-comments wpb">
-                            <h3 class="mb-5">Leave a Comment </h3>
-                            <div class="row">
-                                <div class="col-md-12 data">
-                                    <form action="{{ route('storecomment', $article->id ) }}" method="post">
-                                    @csrf
-                                        @auth
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="fname" class="form-control" value={{ Auth::user()->name }} required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="lname" class="form-control" value={{ Auth::user()->name }} required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="form-control" value={{ Auth::user()->email }} required>
-                                            </div>
-                                        </div>
-                                        @else
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="fname" class="form-control" placeholder="First Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="lname" class="form-control" placeholder="Last Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                            </div>
-                                        </div>
-                                        @endauth
-                                        <div class="col-md-12 form-group">
-                                            <textarea class="form-control" name="comment" id="exampleTextarea" rows="8" placeholder="Message" required></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-lg mt-2">Submit Comment</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </section>
+                        
+                        
                     </div>
                    
                 </div>

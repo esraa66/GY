@@ -238,7 +238,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="netabout">
                                 <a href="index.html" class="logo">
-                                    <img src="images/logo-footer.svg" alt="netcom">
+                                    <img src="{{asset('assets/images/logo-footer.svg')}}" alt="netcom">
                                 </a>
                                 <p> {{  get('goals') }} </p>
                             </div>
