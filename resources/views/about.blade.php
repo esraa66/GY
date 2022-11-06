@@ -46,9 +46,7 @@
                             <h2 class="text-left mb-4">About <span>Find Houses</span></h2>
                         </div>
                         <div class="pftext">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum odio id voluptatibus incidunt cum? Atque quasi eum debitis optio ab. Esse itaque officiis tempora possimus odio rerum aperiam ratione, sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit sunt.</p>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum odio id voluptatibus incidunt cum? Atque quasi eum debitis optio ab. Esse itaque officiis tempora possimus odio rerum aperiam ratione, sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit sunt.</p>
+                            <p>{{get('brief')}}</p>
                         </div>
                         <div class="box bg-2">
                             <a href="about.html" class="text-center button button--moema button--text-thick button--text-upper button--size-s">read More</a>
@@ -86,7 +84,7 @@
                                 <h3>Wide Renge Of Properties</h3>
                             </div>
                             <div class="service-text-p">
-                                <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>
+                                <p class="text-center">{{get('message')}}</p>
                             </div>
                         </div>
                     </article>
@@ -97,7 +95,7 @@
                                 <h3>Trusted by thousands</h3>
                             </div>
                             <div class="service-text-p">
-                                <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>
+                                <p class="text-center">{{get('message')}}</p>
                             </div>
                         </div>
                     </article>
@@ -108,7 +106,7 @@
                                 <h3>Financing made easy</h3>
                             </div>
                             <div class="service-text-p">
-                                <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits adipisicing lacus consectetur Business Directory.</p>
+                                <p class="text-center">{{get('message')}}</p>
                             </div>
                         </div>
                     </article>

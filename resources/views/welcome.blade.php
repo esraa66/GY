@@ -417,21 +417,21 @@
                                 <div class="info">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                     <!-- 95 South Park Ave, USA -->
-                                    <p class="in-p">{{ getAddress() }}</p>
+                                    <p class="in-p">{{ getcon('address') }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     <!-- +456 875 369 208 -->
-                                    <p class="in-p">{{ getPhones() }}</p>
+                                    <p class="in-p">{{ getcon('phone') }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                     <!-- support@findhouses.com -->
-                                    <p class="in-p ti">{{ getEmail() }}</p>
+                                    <p class="in-p ti">{{ getcon('email') }}</p>
                                 </div>
                             </li>
                             <li>
