@@ -254,13 +254,13 @@
                 </div>
             </div>
     </section>
-    <section class="featured portfolio bg-white-3 rec-pro">
+    <section id="projectShowList" class="featured portfolio bg-white-3  rec-pro">
         <div class="container-fluid">
-            <div class="sec-title">
+            <div  class="sec-title pt-5">
                 <h2><span>Properties for </span>Sale</h2>
                 <p>We provide full service at every step.</p>
             </div>
-            <div class="portfolio col-xl-12">
+            <div  class="portfolio col-xl-12">
                 <div class="slick-lancers2">
                     @foreach (\App\Models\Project::orderByDesc('created_at')->limit(10)->get() as $pro)
                         <div class="agents-grid" data-aos="zoom-in">
@@ -376,12 +376,12 @@
     </section>
     <!-- END SECTION POPULAR PLACES -->
     <!-- START SECTION CONTACT US -->
-    <section class="request info-help" id="quote">
-        <div class="container">
-            <div class="row">
+    <section  class="request info-help" id="quote">
+        <div   class="container ">
+            <div class="row pt-5">
                 <div class="col-lg-7 col-md-12" data-aos="fade-right">
                     <h3>Ready to get started?</h3>
-                    <form id="contactform" class="contact-form">
+                    <form id="contactform"  class="contact-form">
                         <div id="success" class="successform">
                             <p class="alert alert-success font-weight-bold" role="alert">Your message was sent
                                 successfully!</p>

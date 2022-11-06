@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Setting;
+use App\Models\Blog;
 use App\Models\Transcode;
 use App\Localization\Locale;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
 
 
 /////////////////////////language
@@ -328,4 +330,16 @@ function getcon($key)
 {
     $value = Setting::where('key', '=', $key)->first()->value_en;
     return $value;
+}
+function getblog(){
+    $title=DB::table('blogs')
+    ->inRandomOrder()
+    ->first()->article;
+    return $title;  
+}
+function getcomment(){
+    $comment=DB::table('comments')
+    ->inRandomOrder()
+    ->first()->comment;
+    return $comment;  
 }

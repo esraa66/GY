@@ -163,7 +163,7 @@
                                     </li>
 
                                     <li><a href="{{route('user.about')}}">About us</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><a href="{{route('main')}}#contactUs">Contact</a></li>
                                     <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                     <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
                                     <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" class="button border btn-lg btn-block text-center">Add Listing<i class="fas fa-laptop-house ml-2"></i></a></li>
@@ -235,7 +235,7 @@
             <div class="top-footer border-0">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="netabout">
                                 <a href="index.html" class="logo">
                                     <img src="images/logo-footer.svg" alt="netcom">
@@ -265,28 +265,28 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="navigation">
                                 <h3>Navigation</h3>
                                 <div class="nav-footer">
                                     <ul>
                                         <li><a href="{{route('main')}}">Home One</a></li>
-                                        <li><a href="properties-right-sidebar.html">Properties Right</a></li>
+                                        <li><a href="{{route('main')}}#projectShowList">Properties Right</a></li>
                                         <li><a href="{{route('allprojects')}}">Properties List</a></li>
-                                        <li><a href="properties-details.html">Property Details</a></li>
-                                        <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
+                                        <li><a href="{{route('allprojects')}}">Property Details</a></li>
+                                       
                                     </ul>
                                     <ul class="nav-right">
-                                        <li><a href="agent-details.html">Agents Details</a></li>
+                                       
                                         <li><a href="{{route('user.about')}}">About Us</a></li>
                                         <li><a href="{{route('allarticle')}}">Blog Default</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                        <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
+                                        <li><a href="{{route('allarticle')}}">Blog Details</a></li>
+                                        <li class="no-mgb"><a href="{{route('main')}}#quote">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="widget">
                                 <h3>Twitter Feeds</h3>
                                 <div class="twitter-widget contuct">
@@ -296,7 +296,7 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h5><a href="{{get('twitter')}}">@findhouses</a> {{\Illuminate\Support\Str::limit(getblog(),25)}}</h5>
                                                 <h4>about 5 days ago</h4>
                                             </div>
                                         </div>
@@ -305,7 +305,7 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h5><a href="{{get('twitter')}}">@findhouses</a> {{\Illuminate\Support\Str::limit(getblog(),25)}}</h5>
                                                 <h4>about 5 days ago</h4>
                                             </div>
                                         </div>
@@ -314,7 +314,7 @@
                                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                                             </div>
                                             <div class="text">
-                                                <h5><a href="#">@findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h5><a href="{{get('twitter')}}">@findhouses</a> {{\Illuminate\Support\Str::limit(getblog(),25)}}</h5>
                                                 <h4>about 5 days ago</h4>
                                             </div>
                                         </div>
@@ -322,7 +322,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
+                        {{-- <div class="col-lg-3 col-md-6">
                             <div class="newsletters">
                                 <h3>Newsletters</h3>
                                 <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive news in your inbox.</p>
@@ -335,7 +335,7 @@
                                     <p class="subscription-success"></p>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

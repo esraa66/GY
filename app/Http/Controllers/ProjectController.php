@@ -158,6 +158,21 @@ class ProjectController extends Controller
             'status_id' => 'required',
             'dev_id' => 'required',
             'pay_plan' => 'required',
+        ],[
+            'name.ar' => 'الاسم باللغه العربيه مطلوب ',
+            'name_fr' => 'الاسم باللغه الفرنسيه مطلوب ',
+            'description' => ' الوصف باللغه الانجليزيه مطلوب  ',
+            'description_ar' =>' الوصف باللغه العربيه مطلوب  ',
+            'description_fr' => ' الوصف باللغه الفرنسيه مطلوب  ',
+            'vedio_link' => '  رابط الفيديو مطلوب  ',
+            'garage' => ' تفاصيل الجاراج مطلوبه  ',
+            'region_id' => ' لوجو المطور مطلوب  ',
+            'area_id' => ' لوجو المطور مطلوب  ',
+            'bedrooms' => '   برجاء اختيار عدد  غرف النوم  ',
+            'type_id' => '   برجاء اختيار نوع المشروع  ',
+            'status_id' => ' لوجو المطور مطلوب  ',
+            'dev_id' => ' لوجو المطور مطلوب  ',
+            'pay_plan' => ' لوجو المطور مطلوب  '
         ]);
         DB::beginTransaction();
         try {

@@ -157,108 +157,6 @@
             </div>
         </section>
         
-        <section class="team">
-            <div class="container">
-                <div class="sec-title">
-                    <h2><span>Our </span>Team</h2>
-                    <p>We provide full service at every step.</p>
-                </div>
-                <div class="row team-all">
-                    <div class="col-lg-3 col-md-6 team-pro">
-                        <div class="team-wrap">
-                            <div class="team-img">
-                                <img src="{{asset('assets2/images/team/t-5.jpg')}}" alt="" />
-                            </div>
-                            <div class="team-content">
-                                <div class="team-info">
-                                    <h3>Carls Jhons</h3>
-                                    <p>Financial Advisor</p>
-                                    <div class="team-socials">
-                                        <ul>
-                                            <li>
-                                                <a href="#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                <a href="#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                <a href="#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span><a href="team-details.html">View Profile</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 team-pro">
-                        <div class="team-wrap">
-                            <div class="team-img">
-                                <img src="{{asset('assets2/images/team/t-6.jpg')}}" alt="" />
-                            </div>
-                            <div class="team-content">
-                                <div class="team-info">
-                                    <h3>Arling Tracy</h3>
-                                    <p>Acountant</p>
-                                    <div class="team-socials">
-                                        <ul>
-                                            <li>
-                                                <a href="#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                <a href="#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                <a href="#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span><a href="team-details.html">View Profile</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 team-pro pb-none">
-                        <div class="team-wrap">
-                            <div class="team-img">
-                                <img src="{{asset('assets2/images/team/t-7.jpg')}}" alt="" />
-                            </div>
-                            <div class="team-content">
-                                <div class="team-info">
-                                    <h3>Mark Web</h3>
-                                    <p>Founder &amp; CEO</p>
-                                    <div class="team-socials">
-                                        <ul>
-                                            <li>
-                                                <a href="#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                <a href="#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                <a href="#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span><a href="team-details.html">View Profile</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 team-pro kat">
-                        <div class="team-wrap">
-                            <div class="team-img">
-                                <img src="{{asset('assets2/images/team/t-8.jpg')}}" alt="" />
-                            </div>
-                            <div class="team-content">
-                                <div class="team-info">
-                                    <h3>Katy Grace</h3>
-                                    <p>Team Leader</p>
-                                    <div class="team-socials">
-                                        <ul>
-                                            <li>
-                                                <a href="#" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                <a href="#" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                <a href="#" title="instagran"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span><a href="team-details.html">View Profile</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         
         <section class="testimonials home18 bg-white">
             <div class="container">
@@ -283,7 +181,7 @@
                             <li><i class="fa fa-star"></i>
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
+                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
                     <div class="test-1 pb-0 pt-0">
                         <img src="{{asset('assets2/images/testimonials/ts-2.jpg')}}" alt="">
@@ -301,7 +199,7 @@
                             <li><i class="fa fa-star-o"></i>
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
+                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
                     <div class="test-1 pt-0">
                         <img src="{{asset('assets2/images/testimonials/ts-3.jpg')}}" alt="">
@@ -319,7 +217,7 @@
                             <li><i class="fa fa-star"></i>
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
+                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
                     <div class="test-1 pt-0">
                         <img src="{{asset('assets2/images/testimonials/ts-4.jpg')}}" alt="">
@@ -337,7 +235,7 @@
                             <li><i class="fa fa-star-o"></i>
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
+                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
                     <div class="test-1 pt-0">
                         <img src="{{asset('assets2/images/testimonials/ts-5.jpg')}}" alt="">
@@ -355,7 +253,7 @@
                             <li><i class="fa fa-star"></i>
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
+                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
                     <div class="test-1 pt-0">
                         <img src="{{asset('assets2/images/testimonials/ts-6.jpg')}}" alt="">
@@ -373,7 +271,7 @@
                             <li><i class="fa fa-star-o"></i>
                             </li>
                         </ul>
-                        <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis donec, suscipit tortor et sapien donec.</p>
+                        <p>{{\Illuminate\Support\Str::limit(getcomment(),25)}}</p>
                     </div>
                 </div>
             </div>
