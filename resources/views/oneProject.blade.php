@@ -93,8 +93,9 @@
                                 </div>
                                 <div class="blog-info details mb-30">
                                     <h5 class="mb-4">Description</h5>
-                                    {{ $project->description()}}
-
+                                    <p>
+                                        {{ $project->description()}}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -193,8 +194,8 @@
 
                         <div class="property wprt-image-video w50 pro">
                             <h5>Property Video</h5>
-                            <img alt="image" src="{{URL::asset('assets2/images/slider/home-slider-4.jpg')}}">
-                            <a class="icon-wrap popup-video popup-youtube" href="https://www.youtube.com/watch?v=dM8En5de7EI">
+                            <img alt="image" src="{{ url('/') . '/images/projects/' . $project->image[0]->name }}">
+                            <a class="icon-wrap popup-video popup-youtube" href="{{ $project->vedio_link }}">
                                 <i class="fa fa-play"></i>
                             </a>
                             <div class="iq-waves">
@@ -206,7 +207,10 @@
                         <div class="property-location map">
                             <h5>Location</h5>
                             <div class="divider-fade"></div>
-                            <div id="map-contact" class="contact-map"></div>
+                            <div  class="contact-map">
+                                <iframe src="https://goo.gl/maps/hJZRhyz8vsXH4HS29" width="700" height="300" style="border:0;" allowfullscreen="true" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                            </div>
                         </div>
                         <!-- Star Reviews -->
                         {{-- <section class="reviews comments">

@@ -56,11 +56,11 @@
                                 <div class="row row-sm">
                                 <div class="col-lg-6">
                                         <label class="form-label">name</label>
-                                        <input  required v-model='name' value="{{$dev->name}}" class="form-control" name="name" placeholder="Input box" type="text">
+                                        <input  required v-model='name' value="{{$dev->name}}" class="form-control" name="name"  type="text">
                                 </div>
                                 <div class="col-lg-6">
                                         <label class="form-label">Logo </label>
-                                        <input name='logo'  class="form-control"  required="" type="file" >
+                                        <input name='logo'  class="form-control"  type="file" >
 								</div>
 
                                     <div class="col-lg-3">
@@ -81,7 +81,6 @@
                                     </div>
                                 </div>
                                       <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">  حفظ</button>
-
                             </div>
                         </div>
                     </div>
@@ -116,8 +115,7 @@
         content = new Vue({
             'el': '#projectbuild',
             data: {
-             name :'',
-
+             name :'{!! $dev->name !!}',
              error :[]
             },
             methods: {
@@ -158,7 +156,7 @@
                                 type: 'success',
                                 confirmButtonText: 'موافق',
                             });
-
+                            window.location.href = '{{ route('dev.index' )}}';
                         }
                     }).catch(response => {
                         console.log(response);

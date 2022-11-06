@@ -14,8 +14,6 @@
 <link rel="stylesheet" href="{{URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css')}}">
 
 
-
-
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -27,11 +25,11 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-         
+
             <div class="pr-1 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
             </div>
-           
+
         </div>
     </div>
     <!-- breadcrumb -->
@@ -49,7 +47,7 @@
                              @include('admin.project.names')
                         </div>
                     </div>
-            
+
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-body">
@@ -110,7 +108,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-5">
-									خطة 
+									خطة
 								</div>
 								{{-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> --}}
 
@@ -141,24 +139,35 @@
 								{{-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> --}}
 
 									<div class="row row-sm">
-										<div class="col-lg-6">
+										<div class="col-lg-6 mt-2">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">صور المشروع* </label>
 												<input name='image[]' multiple class="form-control"  required="" type="file" >
 											</div>
 										</div>
-										<div class="col-lg-6">
+										<div class="col-lg-6 mt-2">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">pdf(1) </label>
 												<input name='pdf'  class="form-control"  required="" type="file" >
 											</div>
 										</div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6 mt-2">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">رابط الفيديو </label>
 												<input name='vedio_link'  class="form-control"  required="" type="text" >
 											</div>
 										</div>
+                                        <div class="col-lg-5 mt-2">
+											<div class="form-group has-success mg-b-0">
+                                                <label class="form-label">  رابط اللوكيشن  </label>
+												<input type="text"  v-model='fram'  name='plan'  class="form-control form-control-lg"  >
+                                                <span> (ضع رابط الخريطه واضغط معالجه يجب ان تظهر الخريطه اسفل الصفحه) </span>
+											</div>
+										</div>
+                                         <div class="col-lg-1">
+                                            <button type="button" @click="convert" class="btn mt-4 btn-info mb-0">  معالجه </button>
+                                         </div>
+
 									</div>
 
 							</div>
@@ -172,41 +181,41 @@
                                     تفاصيل المشروع
                                 </div>
                                 <div class="row row-sm">
-                                  <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                                  <div class="col-lg-4 mt-2">
 										<p class="mg-b-10">  المطور </p><select name='dev_id' v-model='dev_id' class="form-control">
-								
+
                                             @foreach (App\Models\Developer::all() as $t )
                                               <option value="{{$t->id}}">{{ $t->name }}</option>
                                             @endforeach
 										</select>
 								</div>
-                                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                                <div class="col-lg-4 mt-2">
 										<p class="mg-b-10">  النوع </p><select name='type_id' v-model='type_id' class="form-control ">
                                             @foreach (App\Models\Type::all() as $t )
                                               <option value="{{$t->id}}">{{ evaluate($t)['type'] }}</option>
                                             @endforeach
 										</select>
 								</div>
-                                <div class="col-lg-4 mg-t-20 mg-lg-t-0">
+                                <div class="col-lg-4 mt-2">
 										<p class="mg-b-10">  حالة المشروع </p><select name="status_id"  v-model='status_id'  class="form-control ">
 										@foreach (App\Models\status::all() as $t )
                                               <option value="{{$t->id}}">{{ $t->name }}</option>
                                             @endforeach
 										</select>
 								</div>
-                                    <div class="col-lg mg-t-10 mg-lg-t-0">
+                                    <div class="col-lg mt-2 mg-t-10 mg-lg-t-0">
                                         <label class="form-label">rooms</label>
                                         <input  required="" class="form-control" name="rooms" v-model='rooms' placeholder="Input box" type="number">
                                     </div>
-                                    <div class="col-lg mg-t-10 mg-lg-t-0">
+                                    <div class="col-lg mt-2 mg-t-10 mg-lg-t-0">
                                         <label class="form-label">Bedrooms</label>
                                         <input  required="" class="form-control" name="bedrooms" v-model='bedrooms' placeholder="Input box" type="number">
                                     </div>
-                                    <div class="col-lg mg-t-10 mg-lg-t-0">
+                                    <div class="col-lg mt-2 mg-t-10 mg-lg-t-0">
                                         <label class="form-label">Bath</label>
                                         <input  required="" class="form-control" name="bath" v-model='bath' placeholder="Input box" type="text">
                                     </div>
-                                    <div class="col-lg mg-t-10 mg-lg-t-0">
+                                    <div class="col-lg mt-2 mg-t-10 mg-lg-t-0">
                                         <label class="form-label">Garages</label>
                                         <input  required="" class="form-control" name="garage"  v-model='garage' placeholder="Input box" type="text">
                                     </div>
@@ -219,7 +228,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-5">
-									 مميزات المشروع &amp;
+									 مميزات المشروع
 								</div>
 								<div class="row">
                                 @foreach (App\Models\Amenitie::all() as $t )
@@ -232,35 +241,16 @@
 							</div>
 						</div>
 					</div>
-                    {{-- <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
-                        <!--div-->
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="main-content-label mg-b-5">
-                                    معلومات التواصل
-                                </div>
-                                <div class="row row-sm">
-                                    <div class="col-lg">
-                                        <label class="form-label">email</label>
-                                        <input required="" class="form-control" name="email" placeholder="Project@email.com" type="email">
 
-                                    </div>
-                                    <div class="col-lg mg-t-10 mg-lg-t-0">
-                                        <label class="form-label">phone</label>
-                                        <input  required="" class="form-control" name="name_ar" placeholder="Input box" type="text">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     </div>
-                            <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">  حفظ</button>
+                            <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-5">  حفظ</button>
                     </div>
                     </form>
+                    <iframe :src='link' width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </div>
             <!-- row closed -->
-  
+
 @endsection
 
 @section('js')
@@ -271,17 +261,6 @@
     <script src="{{ URL::asset('assets/plugins/parsleyjs/parsley.min.js') }}"></script>
     <!--Internal  Form-wizard js -->
     <script src="{{ URL::asset('assets/js/form-wizard.js') }}"></script>
-    <!--Internal  Datepicker js -->
-    <script src="{{URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
-    <!--Internal Fileuploads js-->
-    <script src="{{URL::asset('assets/plugins/fileuploads/js/fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fileuploads/js/file-upload.js')}}"></script>
-    <!--Internal Fancy uploader js-->
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/fancy-uploader.js')}}"></script>
     <!--Internal  Form-elements js-->
     <script src="{{URL::asset('assets/js/advanced-form-elements.js')}}"></script>
     <script src="{{URL::asset('assets/js/select2.js')}}"></script>
@@ -311,6 +290,8 @@
                 bath: '',
                 garage:'',
                 areas : [],
+                fram:'',
+                link:'',
                 Count: 0
             },
             methods: {
@@ -347,7 +328,6 @@
                         this.validation(this.bath , '    عنوان المشروع مطلوب   ');
                         this.validation(this.bedrooms , '    عنوان المشروع مطلوب   ');
                         this.validation(this.rooms , '    عنوان المشروع مطلوب   ');
-
                         this.validation(this.status_id , '    حالة المشروع       ');
                         this.validation(this.dev_id , '    مطور المشروع     ');
                         this.validation(this.area_id , '    عنوان المشروع مطلوب   ');
@@ -355,7 +335,7 @@
                         this.validation(this.Count , '   خطة الدفع مطلوبه     ');
                         this.validation(this.price , '  سعر المشروع مطلوب   ');
                         this.validation(this.code , '   كود المشروع مطلوب   ');
-                        /// 
+                        ///
                         this.validation(this.description_fr , '     الوصف باللغه الفرنسيه مطلوب  ');
                         this.validation(this.description_ar , '     الوصف باللغه العربيه مطلوب  ');
                         this.validation(this.description , '     الوصف باللغه الانجليزيه مطلوب  ');
@@ -386,6 +366,13 @@
                     }).catch(response => {
                         console.log(response);
                     })
+                },
+                convert:function(){
+                    var mylocation = this.fram
+                    var myArray = mylocation.split(" ");
+                    fram = myArray[1].split('"');
+                    this.fram = fram[1]
+                    this.link = fram[1]
                 }
             }
         });

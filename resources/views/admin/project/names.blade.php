@@ -10,7 +10,7 @@
                                     <div class="col-lg mg-t-10 mg-lg-t-0">
                                         <label class="form-label"> الاسم باللغخ الانجليزيه</label>
                                         <input required="" v-model='name' class="form-control" name="name" placeholder="Input box " type="text">
-                                    </div> 
+                                    </div>
                                     <div class="col-lg mg-t-10 mg-lg-t-0">
                                         <label class="form-label"> الاسم باللغه الفرنسيه</label>
                                         <input required="" v-model='name_fr' class="form-control" name="name_fr" placeholder="Input box " type="text">
