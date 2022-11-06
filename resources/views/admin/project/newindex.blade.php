@@ -54,9 +54,9 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0"> id</th>
-                                            <th class="wd-15p border-bottom-0"> name </th>
-                                            <th class="wd-15p border-bottom-0"> action </th>
-                                            <th class="wd-15p border-bottom-0"> time </th>
+                                            <th class="wd-15p border-bottom-0"> الاسم  </th>
+                                            <th class="wd-15p border-bottom-0"> اجراءات </th>
+                                            <th class="wd-15p border-bottom-0"> التاريخ  </th>
                                         </tr>
                                     </thead>
                                     <tbody>

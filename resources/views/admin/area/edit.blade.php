@@ -22,8 +22,8 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">Forms</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    Form-wizards</span>
+                <h4 class="content-title mb-0 my-auto"> تعديل حي </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
@@ -41,35 +41,29 @@
             <form id="editarea">
                 @csrf
                 <div class="row">
-                   
+
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-body">
-                            
-								<div class="main-content-label mg-b-5"> اضافه منطقه جديده 
+
+								<div class="main-content-label mg-b-5">  تعديل حي
 								</div>
 
 								<div class="row row-sm mg-b-20">
                                 <div class="col-lg">
-                                        <label class="form-label">ِArea Name</label>
+                                        <label class="form-label"> اسم الحي  </label>
                                         <input  required="" class="form-control" name="area" value="{{ $area->area }}" placeholder="Input box" type="text">
                                 </div>
 									<div class="col-lg-6 mg-t-20 mg-lg-t-0">
-										<p class="mg-b-10">  Region </p>
+										<p class="mg-b-10">  المكان التابع </p>
                                         <select class="form-control select"  name='region_id' >
                                             @foreach(App\Models\Location::all() as $region)
-                                                <option  @if($region->id == $area->region_id) selected @endif 
+                                                <option  @if($region->id == $area->region_id) selected @endif
                                                     value="{{$region->id}}">{{$region->location}}</option>
-											    
 											@endforeach
 										</select>
 									</div>
-                                      <!-- <div class="col-lg">
-                                        <label class="form-label">name(ar)</label>
-                                        <input  required="" class="form-control" name="name_ar" placeholder="Input box" type="file">
-                                </div> -->
-                                <!-- <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">  تعديل</button> -->
-                                    
+
 								</div>
                                 <div class="d-flex justify-content-between"  >
                                     <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">  تعديل</button>
@@ -79,7 +73,7 @@
 						</div>
 					</div>
                 </div>
-                
+
             </form>    <!-- row closed -->
         </div>
         <!-- Container closed -->
@@ -89,23 +83,7 @@
 
 @section('js')
  <!--Internal  Select2 js -->
-    <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
-    <!-- Internal Jquery.steps js -->
-    <script src="{{ URL::asset('assets/plugins/jquery-steps/jquery.steps.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/parsleyjs/parsley.min.js') }}"></script>
-    <!--Internal  Form-wizard js -->
-    <script src="{{ URL::asset('assets/js/form-wizard.js') }}"></script>
-    <!--Internal  Datepicker js -->
-    <script src="{{URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
-    <!--Internal Fileuploads js-->
-    <script src="{{URL::asset('assets/plugins/fileuploads/js/fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fileuploads/js/file-upload.js')}}"></script>
-    <!--Internal Fancy uploader js-->
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js')}}"></script>
-    <script src="{{URL::asset('assets/plugins/fancyuploder/fancy-uploader.js')}}"></script>
+
     <!--Internal  Form-elements js-->
     <script src="{{URL::asset('assets/js/advanced-form-elements.js')}}"></script>
     <script src="{{URL::asset('assets/js/select2.js')}}"></script>
@@ -128,12 +106,7 @@
                 },
                 saveData: function(e) {
                     e.preventDefault();
-                    // Swal.fire({
-                    //       title: 'جارى الحفظ',
-                    //      showConfirmButton: false,
-                    //      timer: 150000
-                    // })
-                        Swal.showLoading()
+                    Swal.showLoading()
                     let formData = new FormData(document.getElementById('editarea'));
                         formData.append('id',{!! $area->id !!})
                     axios.post('{{ route('area.update') }}', formData).then(response => {

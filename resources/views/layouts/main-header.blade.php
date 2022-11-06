@@ -17,7 +17,7 @@
 						</div>
 					</div>
 					<div class="main-header-right">
-						<ul class="nav">
+						{{-- <ul class="nav">
 							<li class="">
 								<div class="dropdown  nav-itemd-none d-md-flex">
 									<a href="#" class="d-flex  nav-item nav-link pl-0 country-flag1" data-toggle="dropdown" aria-expanded="false">
@@ -60,7 +60,7 @@
 									</div>
 								</div>
 							</li>
-						</ul>
+						</ul> --}}
 						<div class="nav nav-item  navbar-nav-right ml-auto">
 							<div class="nav-link" id="bs-example-navbar-collapse-1">
 								<form class="navbar-form" role="search">

@@ -34,40 +34,23 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="main-content-label mg-b-5">
-                                      اعدادات الموقع
+                                     ترجمه رسائل ومفاتيح الموقع عامتا
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
-                                            <h2> لغات التشغيل  </h2>
+
                                     </div>
                                      <div class="col-2">
-                                        <a onclick="location.href='{{route('setting.lang','ar') }}'"  class="btn btn-primary mt-3 mb-0">  عربي</a>
+                                        <button  onclick="location.href='{{route('setting.lang','ar') }}'"  class="btn btn-primary mt-3 mb-0">  عربي</a>
                                     </div>
                                      <div class="col-2">
-                                    <button type="button"  class="btn btn-primary mt-3 mb-0"> انجلش</button>
+                                    <button type="button"  onclick="location.href='{{route('setting.lang','en') }}'" class="btn btn-primary mt-3 mb-0"> English </button>
                                     </div>
                                      <div class="col-2">
-                                    <button type="button" class="btn btn-primary mt-3 mb-0"> حفظ</button>
+                                    <button type="button" onclick="location.href='{{route('setting.lang','fr') }}'" class="btn btn-primary mt-3 mb-0"> frensh </button>
 
                                     </div>
                                 </div>
-                                {{-- <div class="row row-sm">
-                                    <div class="col-lg-4">
-                                        <label class="form-label">title_(en) </label>
-                                        <input required="" class="form-control" name="title" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">title_(ar)</label>
-                                        <input required="" class="form-control" name="title_ar" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label">title_(fr) </label>
-                                        <input required="" class="form-control" name="title_fr" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                </div> --}}
                                 @foreach (\App\Models\Setting::whereIn('id',[1,2,3,4,5,6,7,8,9,10,11,12,13])->get(); as  $st)
                                 <br> <hr> <br>
                                     <h6> {{ $st->key }} </h6>
@@ -173,7 +156,7 @@
             axios.post("{{route('setting.update')}}", formData).then(response => {
                 //    $('#loading').hide();
                         swal({
-                            title: 'sdsdd',
+                            title: 'تم التعديل بنجاح',
                             type: 'success',
                             confirmButtonText: 'موافق',
                         });

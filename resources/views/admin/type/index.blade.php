@@ -44,15 +44,15 @@
                             </div>
                             <div class="row ">
                                 <div class="col-lg-4">
-                                    <label class="form-label">name(ar)</label>
+                                    <label class="form-label"> الحاله عربي  </label>
                                     <input  required="" class="form-control"  v-model='name_ar' name="name_ar" placeholder="Input box" type="text">
                                 </div>
                                 <div class="col-lg-4 mg-t-10 mg-lg-t-0">
-                                    <label class="form-label">name(en)</label>
+                                    <label class="form-label"> الحاله انجليزي</label>
                                     <input required="" class="form-control" v-model='name' name="name" placeholder="Input box " type="text">
                                 </div>
                                 <div class="col-lg-4 mg-t-10 mg-lg-t-0">
-                                    <label class="form-label">name(fr)</label>
+                                    <label class="form-label"> الحاله فرنساوي </label>
                                     <input required="" class="form-control"  v-model='name_fr' name="name_fr" placeholder="Input box " type="text">
                                 </div>
                             </div>
@@ -65,10 +65,9 @@
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="d-flex justify-content-between">
-                                <h4 class="card-title mg-b-0">SIMPLE TABLE</h4>
                                 <i class="mdi mdi-dots-horizontal text-gray"></i>
                             </div>
-                            <p class="tx-12 tx-gray-500 mb-2">Example of Valex Simple Table. <a href="">Learn
+                            <p class="tx-12 tx-gray-500 mb-2"> عرض حالات المشاريع<a href="">Learn
                                     more</a></p>
                         </div>
                         <div class="card-body">
@@ -77,10 +76,10 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0"> id</th>
-                                            <th class="wd-15p border-bottom-0"> type </th>
-                                            <th class="wd-15p border-bottom-0"> type_ar </th>
-                                            <th class="wd-15p border-bottom-0"> type_fr </th>
-                                            <th class="wd-20p border-bottom-0">  action </th>
+                                            <th class="wd-15p border-bottom-0"> الحاله انجلش  </th>
+                                            <th class="wd-15p border-bottom-0">  الحاله عربي  </th>
+                                            <th class="wd-15p border-bottom-0">  الحاله فرنساوي  </th>
+                                            <th class="wd-20p border-bottom-0">  اجراءات </th>
                                         </tr>
                                     </thead>
                                     <tbody>

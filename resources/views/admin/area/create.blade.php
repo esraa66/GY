@@ -42,12 +42,12 @@
             <form id='newarea' >
                 @csrf
                 <div class="row">
-                   
+
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-body">
-                            
-								<div class="main-content-label mg-b-5"> اضافه منطقه جديده 
+
+								<div class="main-content-label mg-b-5"> اضافه منطقه جديده
 								</div>
 
 								<div class="row row-sm mg-b-20">
@@ -63,20 +63,14 @@
 											@endforeach
 										</select>
 									</div>
-                                      <!-- <div class="col-lg">
-                                        <label class="form-label">name(ar)</label>
-                                        <input  required="" class="form-control" name="name_ar" placeholder="Input box" type="file">
-                                </div> -->
-                                <!-- <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">  حفظ</button> -->
-                                    
 								</div>
                                 <button type="submit" @click="saveData" class="btn btn-primary">حفظ</button>
 							</div>
 						</div>
 					</div>
                 </div>
-                
-            </form>   
+
+            </form>
             <div class="row">
                     <div class="col-xl-12">
                     <div class="card">
@@ -92,11 +86,11 @@
                                     <thead>
                                         <tr>
                                             <th class=" border-bottom-0"> id</th>
-                                            <th class=" border-bottom-0"> Area </th>
-                                            <th class=" border-bottom-0"> Region </th>
-                                            <th class=" border-bottom-0"> Action </th>
-                                            <th class=" border-bottom-0"> created_at </th>
-                                            
+                                            <th class=" border-bottom-0"> الحي  </th>
+                                            <th class=" border-bottom-0"> المكان الرئيسي </th>
+                                            <th class=" border-bottom-0"> اجراء  </th>
+                                            <th class=" border-bottom-0"> الوقت  </th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,8 +142,8 @@
 <script src="{{URL::asset('assets/plugins/quill/quill.min.js')}}"></script>
 <!-- Internal Form-editor js -->
 <script src="{{URL::asset('assets/js/form-editor.js')}}"></script>
-    
-    
+
+
     @include('vue')
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <script>
@@ -175,7 +169,7 @@ $(function() {
                         name: 'area',
                     },
 
-                   
+
                     {
                         data: 'location_name',
                         name: 'region_id',
@@ -252,7 +246,7 @@ $(function() {
                     let formData = new FormData(document.getElementById('newarea'));
                     this.load = true;
                     axios.post('{{ route('area.store') }}', formData).then(response => {
-                        
+
                         if (response.data == "") {
                             swal({
                                 //response.data.msg

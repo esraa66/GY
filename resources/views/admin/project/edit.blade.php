@@ -27,11 +27,11 @@
             </div>
         </div>
         <div class="d-flex my-xl-auto right-content">
-         
+
             <div class="pr-1 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
             </div>
-           
+
         </div>
     </div>
     <!-- breadcrumb -->
@@ -50,7 +50,7 @@
                              @include('admin.project.nameedit')
                         </div>
                     </div>
-                    
+
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-body">
@@ -85,7 +85,7 @@
 						</div>
 					</div>
 
-                    
+
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-body">
@@ -104,14 +104,11 @@
 									<div class="col-lg-6 mg-t-20 mg-lg-t-0">
 										<p class="mg-b-10">  Area </p>
                                         <select  name='area_id'   class="form-control">
-                                        @foreach (App\Models\Area::all() as $t ) 
+                                        @foreach (App\Models\Area::all() as $t )
                                             @if($t->region_id == $project->region_id)
-
                                                 <option @if($t->id == $project->area_id) selected @endif value="{{$t->id}}" > {{ $t->area }}</option>
-                                                
-                                                <!-- <option v-for='ar in areas'    v-bind:value="ar.id"> @{{ ar.area }}</potion> -->
-                                                        
-                                            @endif 
+
+                                            @endif
                                         @endforeach
 										</select>
 									</div><!-- col-4 -->
@@ -124,28 +121,28 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-5">
-									خطة 
+									خطة
 								</div>
-								
+
 
 									<div class="row row-sm">
 										<div class="col-lg-6">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label"> صوره </label>
 												<input name='plan_image'  class="form-control"   type="file" >
-                                                
-                                                <!-- <img src="{{asset('images/projects/plan/'.$project->plans)}}" 
+
+                                                <!-- <img src="{{asset('images/projects/plan/'.$project->plans)}}"
                                                 height="50px" width="50px"> -->
 											</div>
 										</div>
-                                        
+
 										<div class="col-lg-6">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label"> عنوان </label>
 												<input name='planName'@if($result) value ="{{$result[0]['name']}}" @value ="" @endif class="form-control"  required="" type="text" >
 											</div>
 										</div>
-                                        
+
 									</div>
 
 							</div>
@@ -165,7 +162,7 @@
                                                 <label class="form-label">صور المشروع* </label>
 												<input name='image[]' multiple class="form-control"  type="file" >
                                                 <!-- @foreach($project->image as $t)
-                                                <img src="{{asset('images/projects/'.$t->image)}}" 
+                                                <img src="{{asset('images/projects/'.$t->image)}}"
                                                 height="50px" width="50px">
                                                 @endforeach -->
 											</div>
@@ -174,7 +171,7 @@
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">pdf(1) </label>
 												<input name='pdf'  value= "{{ $project->pdf }}" class="form-control" type="file" >
-                                                <!-- <img src="{{asset('images/projects/'.$project->pdf)}}" 
+                                                <!-- <img src="{{asset('images/projects/'.$project->pdf)}}"
                                                 height="50px" width="50px"> -->
 											</div>
 										</div>
@@ -183,7 +180,7 @@
                                                 <label class="form-label">رابط الفيديو </label>
 												<input name='vedio_link' value="{{ $project-> vedio_link }}"  class="form-control"  required="" type="text" >
 											</div>
-                                            
+
 										</div>
 									</div>
 
@@ -201,7 +198,7 @@
                                   <div class="col-lg-4 mg-t-20 mg-lg-t-0">
 										<p class="mg-b-10">  المطور </p><select name='dev_id'  class="form-control">
                                             @foreach (App\Models\Developer::all() as $t )
-                                              <option  @if($t->id == $project->dev_id) selected @endif value="{{$t->id}}">{{$t->name}}</option>  
+                                              <option  @if($t->id == $project->dev_id) selected @endif value="{{$t->id}}">{{$t->name}}</option>
                                             @endforeach
 										</select>
 								</div>
@@ -250,11 +247,11 @@
 								<div class="row">
                                 @foreach (App\Models\Amenitie::all() as $t )
 									<div class="col-lg-3">
-										<label class="ckbox"><input  multiple 
-                                            value="{{ $t->id }}"  type="checkbox"  
+										<label class="ckbox"><input  multiple
+                                            value="{{ $t->id }}"  type="checkbox"
                                             @if ( in_array ($t->id , $project->advgarr() ) )
                                              checked name='amenitie_update[]'
-                                            @else 
+                                            @else
                                             name='amenitie[]'
                                             @endif>
                                             <span> {{ $t->name }}</span>
@@ -266,35 +263,14 @@
 							</div>
 						</div>
 					</div>
-                    {{-- <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
-                        <!--div-->
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="main-content-label mg-b-5">
-                                    معلومات التواصل
-                                </div>
-                                <div class="row row-sm">
-                                    <div class="col-lg">
-                                        <label class="form-label">email</label>
-                                        <input required="" class="form-control" name="email" placeholder="Project@email.com" type="email">
 
-                                    </div>
-                                    <div class="col-lg mg-t-10 mg-lg-t-0">
-                                        <label class="form-label">phone</label>
-                                        <input  required="" class="form-control" name="name_ar" placeholder="Input box" type="text">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     </div>
                             <button type="submit"  class="btn btn-primary mt-3 mb-0">  تعديل</button>
                     </div>
                     </form>
     </div>
             <!-- row closed -->
-  
+
 @endsection
 
 @section('js')
@@ -334,7 +310,7 @@
                     url: url,
                     type: "GET",
                     dataType: "json",
-                    success: function (data) {                        
+                    success: function (data) {
                         console.log(data['areas'] );
                         $('select[name="area_id"]').empty();
                         //$('select[name="area_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
@@ -355,4 +331,4 @@
     });
 </script>
 
-@endsection    
+@endsection

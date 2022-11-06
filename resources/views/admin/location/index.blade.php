@@ -23,7 +23,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">المقالاات</h4>
+                <h4 class="content-title mb-0 my-auto"> الاماكن </h4>
 
             </div>
         </div>
@@ -55,24 +55,14 @@
                                 </div>
                                 <div class="row row-sm">
                                     <div class="col-lg-6">
-                                        <label class="form-label">   {{ __('Name_en') }} </label>
+                                        <label class="form-label">   الاسم </label>
                                         <input required="" v-model='name' class="form-control" name="name" placeholder="Input box"
                                             type="text">
                                     </div>
                                     <div class="col-lg-6">
-                                        <label class="form-label">Image </label>
+                                        <label class="form-label"> صوره </label>
                                         <input name='image' multiple class="form-control" required="" type="file">
                                     </div>
-                                    {{-- <div class="col-lg-4">
-                                        <label class="form-label"> {{ __('Name_ar') }} </label>
-                                        <input required="" class="form-control" name="name_ar" placeholder="Input box"
-                                            type="text">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label class="form-label"> {{ __('Name_fr') }} </label>
-                                        <input required="" class="form-control" name="name_fr" placeholder="Input box"
-                                            type="text">
-                                    </div> --}}
                                 </div>
 
                             <button type="submit" @click="saveData" class="btn btn-primary mt-3 mb-0">Submit</button>
@@ -97,9 +87,9 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0"> id</th>
-                                            <th class="wd-15p border-bottom-0"> title </th>
-                                            <th class="wd-15p border-bottom-0"> action </th>
-                                            <th class="wd-15p border-bottom-0"> time </th>
+                                            <th class="wd-15p border-bottom-0"> اسم المكان </th>
+                                            <th class="wd-15p border-bottom-0"> اجراءات  </th>
+                                            <th class="wd-15p border-bottom-0">  عدد الاحياء التابعه </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -148,28 +138,6 @@
     @include('vue')
     <script>
 
-    //     columns = [
-    //                 {
-    //                     data: 'id',
-    //                     name: 'id',
-    //                 },
-    //                 {
-    //                     data: 'location',
-    //                     name: 'location',
-    //                 },
-    //                 {
-    //                     data :'count',
-    //                     name:'count'
-    //                 },
-    //                 {
-    //                     data: 'action',
-    //                     name: 'action',
-    //                     orderable: true,
-    //                     searchable: true
-    //                 },
-
-    //             ]
-    // units('type'  , '{{ route('location.index') }}' , columns)
 
          $(function() {
             var table = $('#type').DataTable({
@@ -192,16 +160,15 @@
                         name: 'location',
                     },
                     {
-                        data :'count',
-                        name:'count'
-                    },
-                    {
                         data: 'action',
                         name: 'action',
                         orderable: true,
                         searchable: true
                     },
-
+                    {
+                        data :'count',
+                        name:'count'
+                    },
                 ]
             })
 
