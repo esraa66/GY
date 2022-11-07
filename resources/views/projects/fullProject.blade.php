@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </section>
-          
+
                 {{-- <section class="headings-2 pt-0">
                     <div class="pro-wrapper">
                         <div class="detail-wrapper-body">
@@ -88,7 +88,7 @@
                                 <span>{{ $pro->garage }} Garages</span>
                             </li>
                         </ul>
-                        
+
                     </div>
                     <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0 my-44 ft" data-aos="fade-up">
                         <div class="project-single mb-0 bb-0">
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="button-effect">
                                     <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
-                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                    <a href="{{ $pro->vedio_link }}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                     <a href="{{ route('project',$pro->id) }}" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                 </div>
                             </div>
@@ -111,11 +111,11 @@
                     </div>
                     <!-- homes content -->
                  @endforeach
-               
-            
+
+
                 </div>
                 {{ $projects->links('pagination::bootstrap-4') }}
-             
+
             </div>
         </section>
         <!-- END SECTION PROPERTIES LISTING -->

@@ -37,8 +37,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="banner-inner mt-4">
-                                <h1 class="title text-center">Find Your Dream Home</h1>
-                                <h5 class="sub-title text-center">We Have Over Million Properties For You</h5>
+                                <h1 class="title text-center">{{ __('messages.Find Your Dream Home') }}</h1>
+                                <h5 class="sub-title text-center">{{ __('messages.We Have Over Million Properties For You') }}</h5>
                             </div>
                         </div>
                         <!-- Search Form -->
@@ -75,16 +75,11 @@
                                                     </div>
 
                                                     <div class="col-2">
-                                                        <input class="btn btn-yellow" type="submit" value="search now">
+                                                        <input class="btn btn-yellow" type="submit" value="{{ __('messages.Search Now') }}">
                                                     </div>
                                                 </div>
                                             </form>
-
-
-
-                                            <!-- collapse ////////////////////////////////////// -->
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -97,8 +92,8 @@
     <section id="projectShowList" class="featured portfolio bg-white-3  rec-pro">
         <div class="container-fluid">
             <div  class="sec-title pt-5">
-                <h2><span>Properties for </span>Sale</h2>
-                <p>We provide full service at every step.</p>
+                <h2>{{ __('messages.Properties For Sale') }}</h2>
+                <p>{{ __('messages.We provide full service at every step.') }}</p>
             </div>
             <div  class="portfolio col-xl-12">
                 <div class="slick-lancers2">
@@ -112,9 +107,6 @@
                                             <a href="{{ route('project', $pro->id) }}" class="homes-img">
                                                 <div class="homes-tag button alt featured">Featured</div>
                                                 <div class="homes-tag button alt sale">For Sale</div>
-                                                <!-- <img src="{{ url('/') . '/images/projects/' . $pro->image[0]->name }}"
-                                                         alt="{{ $pro->name() }}"
-                                                         class="img-responsive" > -->
                                                 <div
                                                     style="
                                                          height: 350px;
@@ -129,7 +121,7 @@
                                         <div class="button-effect">
                                             <a href="{{ route('project', $pro->id) }}" class="btn"><i
                                                     class="fa fa-link"></i></a>
-                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY"
+                                            <a href="{{ $pro->vedio_link }}"
                                                 class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                             <a href="{{ route('project', $pro->id) }}" class="img-poppu btn"><i
                                                     class="fa fa-photo"></i></a>
@@ -148,32 +140,21 @@
                                         <ul class="homes-list clearfix">
                                             <li class="the-icons">
                                                 <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                                <span>{{ $pro->bedrooms }} Beds</span>
+                                                <span>{{ $pro->bedrooms }} {{ __('messages.beds') }}</span>
                                             </li>
                                             <li class="the-icons">
                                                 <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                                <span>{{ $pro->baths }} Baths</span>
+                                                <span>{{ $pro->baths }}  {{ __('messages.Baths') }} </span>
                                             </li>
                                             <li class="the-icons">
                                                 <i class="flaticon-square" aria-hidden="true"></i>
-                                                <span>720 sq ft</span>
+                                                <span>720 {{ __('messages.sq ft') }} </span>
                                             </li>
                                         </ul>
                                         <div class="price-properties footer pt-3 pb-0">
                                             <h3 class="title mt-3">
                                                 <a href="single-property-1.html">$ {{ $pro->price }}</a>
                                             </h3>
-                                            <div class="compare">
-                                                <a href="#" title="Compare">
-                                                    <i class="flaticon-compare"></i>
-                                                </a>
-                                                <a href="#" title="Share">
-                                                    <i class="flaticon-share"></i>
-                                                </a>
-                                                <a href="#" title="Favorites">
-                                                    <i class="flaticon-heart"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -182,8 +163,7 @@
                     @endforeach
                 </div>
                 <div class="bg-all">
-                    <a href="{{ route('allprojects') }}" class="btn btn-outline-light test"> رؤية
-                        المزيد </a>
+                    <a href="{{ route('allprojects') }}" class="btn btn-outline-light "> {{ __('messages.Read More') }} </a>
                 </div>
             </div>
         </div>
@@ -193,11 +173,11 @@
     <section class="visited-cities bg-white-3 rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Most Popular </span>Places</h2>
-                <p>Explore the world of real estate.</p>
+                <h2>{{ __('messages.Most Popular Places') }}</h2>
+                <p>{{ __('messages.Explore the world of real estate.') }}</p>
             </div>
             <div class="row d-flex justify-content-center">
-                @foreach (\App\Models\Location::orderByDesc('created_at')->limit(10)->get() as $lo)
+                @foreach (\App\Models\Location::orderByDesc('created_at')->limit(4)->get() as $lo)
                     <div class="col-lg-3 col-md-6 pr-1" data-aos="fade-right">
                         <!-- Image Box -->
                         <a href="{{ route('filterLocation', $lo->id) }}" class="img-box hover-effect">
@@ -220,14 +200,13 @@
         <div   class="container ">
             <div class="row pt-5">
                 <div class="col-lg-7 col-md-12" data-aos="fade-right">
-                    <h3>Ready to get started?</h3>
+                    <h3>{{ __('messages.Ready to get started?') }}</h3>
                     <form id="contactform"  class="contact-form">
                         <div id="success" class="successform">
-                            <p class="alert alert-success font-weight-bold" role="alert">Your message was sent
-                                successfully!</p>
+                            <p class="alert alert-success font-weight-bold" role="alert">{{ __('messages.your message send success') }}!</p>
                         </div>
                         <div id="error" class="errorform">
-                            <p>Something went wrong, try refreshing and submitting the form again.</p>
+                            <p>{{ __('messages.pleas try agan')}}</p>
                         </div>
                         <div class="form-group">
                             <input type="text" required v-model="name" class="form-control input-custom input-full"
@@ -245,39 +224,30 @@
                             <textarea class="form-control textarea-custom input-full" id="ccomment" name="msg" v-model="msg" required
                                 rows="1" placeholder="Your Message"></textarea>
                         </div>
-                        <button type="button" @click="saveData" class="btn btn-primary btn-lg">Send Message</button>
+                        <button type="button" @click="saveData" class="btn btn-primary btn-lg">{{ __('messages.Send Message')}} </button>
                     </form>
                 </div>
                 <div class="col-lg-5 col-md-12 bgc" data-aos="fade-left">
                     <div class="call-info">
-                        <h3>Contact Details</h3>
-                        <p class="mb-5">Please find below contact details and contact us today!</p>
+                        <h3>{{ __('messages.Please giv a messages') }} </h3>
+                        <p class="mb-5">{{ __('messages.Please find below contact details and contact us today!') }}</p>
                         <ul>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <!-- 95 South Park Ave, USA -->
                                     <p class="in-p">{{ getcon('address') }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <!-- +456 875 369 208 -->
                                     <p class="in-p">{{ getcon('phone') }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <!-- support@findhouses.com -->
                                     <p class="in-p ti">{{ getcon('email') }}</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="info cll">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    <p class="in-p ti">8:00 a.m - 9:00 p.m</p>
                                 </div>
                             </li>
                         </ul>
@@ -291,8 +261,8 @@
     <section class="blog-section bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Latest </span>News</h2>
-                <p>The latest news form real estate.</p>
+                <h2> {{ __('messages.Latest News')}} </h2>
+
             </div>
             <div class="news-wrap">
                 <div class="row">
@@ -301,7 +271,7 @@
                             <div class="news-item news-item-sm">
                                 <a href="{{ route('article', $blog->id) }}" class="news-img-link">
                                     <div class="news-item-img">
-                                        <img class="resp-img" src="{{ url('/') . '/images/blogs/' . $blog->image }}"
+                                        <img class="resp-img" loading="lazy" src="{{ url('/') . '/images/blogs/' . $blog->image }}"
                                             alt="blog image">
                                     </div>
                                 </a>
@@ -309,17 +279,11 @@
                                     <a href="{{ route('article', $blog->id) }}">
                                         <h3>{{ $blog->title }}</h3>
                                     </a>
-
                                     <div class="news-item-descr">
-                                        <p>{{ $blog->article }}</p>
+                                        <p>{{ \Illuminate\Support\Str::limit($blog->article,25) }}</p>
                                     </div>
                                     <div class="news-item-bottom">
-                                        <a href="{{ route('article', $blog->id) }}" class="news-link">Read more...</a>
-                                        <ul class="action-list">
-                                            <li class="action-item"><i class="fa fa-heart"></i> <span>306</span></li>
-                                            <li class="action-item"><i class="fa fa-comment"></i> <span>34</span></li>
-                                            <li class="action-item"><i class="fa fa-share-alt"></i> <span>122</span></li>
-                                        </ul>
+                                        <a href="{{ route('article', $blog->id) }}" class="news-link">{{ __('messages.Read More') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +294,7 @@
 
         </div>
         <div class="bg-all">
-            <a href="{{ route('allarticle') }}" class="btn btn-outline-light"> رؤية المزيد </a>
+            <a href="{{ route('allarticle') }}" class="btn btn-outline-light">  {{ __('messages.Read More') }}  </a>
         </div>
     </section>
     <!-- END SECTION BLOG -->
@@ -339,18 +303,13 @@
     <div class="partners bg-white-3 rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Our </span>Partners</h2>
-                <p>The Companies That Represent Us.</p>
+                <h2><span> {{ __('messages.Our Partners') }} </h2>
+
             </div>
             <div class="owl-carousel style2">
                 @foreach (\App\Models\Developer::all() as $dev)
-                    <div class="owl-item" data-aos="fade-up"><img src="{{ url('/') . '/images/devs/' . $dev->logo }}"
-                            alt=""></div>
+                    <div class="owl-item" loading="lazy" data-aos="fade-up"><img src="{{ url('/') . '/images/devs/' . $dev->logo }}" alt="{{ $dev->name }}"></div>
                 @endforeach
-                {{-- @foreach (\App\Models\Test::all() as $r)
-                                        <span> {{ $r->id }} </span>    <h1>{{ evaluate($r)['name'] }}</h1>
-                      @endforeach --}}
-
             </div>
         </div>
     </div>

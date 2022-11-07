@@ -47,7 +47,7 @@
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
                         <!--div-->
                         <div class="card">
-                             @include('admin.project.nameedit')
+                            @include('admin.project.nameedit')
                         </div>
                     </div>
 
@@ -84,14 +84,11 @@
 							</div>
 						</div>
 					</div>
-
-
                     <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
 						<div class="card">
 							<div class="card-body">
 								<div class="main-content-label mg-b-5"> عنوان المشروع
 								</div>
-
 								<div class="row row-sm mg-b-20">
 									<div class="col-lg-6 mg-t-20 mg-lg-t-0">
 										<p class="mg-b-10">  المنطقة </p>
@@ -107,7 +104,6 @@
                                         @foreach (App\Models\Area::all() as $t )
                                             @if($t->region_id == $project->region_id)
                                                 <option @if($t->id == $project->area_id) selected @endif value="{{$t->id}}" > {{ $t->area }}</option>
-
                                             @endif
                                         @endforeach
 										</select>
@@ -123,16 +119,11 @@
 								<div class="main-content-label mg-b-5">
 									خطة
 								</div>
-
-
 									<div class="row row-sm">
 										<div class="col-lg-6">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label"> صوره </label>
 												<input name='plan_image'  class="form-control"   type="file" >
-
-                                                <!-- <img src="{{asset('images/projects/plan/'.$project->plans)}}"
-                                                height="50px" width="50px"> -->
 											</div>
 										</div>
 
@@ -142,9 +133,7 @@
 												<input name='planName'@if($result) value ="{{$result[0]['name']}}" @value ="" @endif class="form-control"  required="" type="text" >
 											</div>
 										</div>
-
 									</div>
-
 							</div>
 						</div>
 					</div>
@@ -154,34 +143,35 @@
 								<div class="main-content-label mg-b-5">
 									مرفقات لمشروع
 								</div>
-								{{-- <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p> --}}
-
 									<div class="row row-sm">
 										<div class="col-lg-6">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">صور المشروع* </label>
 												<input name='image[]' multiple class="form-control"  type="file" >
-                                                <!-- @foreach($project->image as $t)
-                                                <img src="{{asset('images/projects/'.$t->image)}}"
-                                                height="50px" width="50px">
-                                                @endforeach -->
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">pdf(1) </label>
-												<input name='pdf'  value= "{{ $project->pdf }}" class="form-control" type="file" >
-                                                <!-- <img src="{{asset('images/projects/'.$project->pdf)}}"
-                                                height="50px" width="50px"> -->
+												<input name='pdf'  value="" class="form-control" type="file" >
 											</div>
 										</div>
-                                        <div class="col-lg-12">
+                                         <div class="col-lg-6 mt-2">
 											<div class="form-group has-success mg-b-0">
                                                 <label class="form-label">رابط الفيديو </label>
-												<input name='vedio_link' value="{{ $project-> vedio_link }}"  class="form-control"  required="" type="text" >
+												<input name='vedio_link'  class="form-control"  required="" type="text" >
 											</div>
-
 										</div>
+                                        <div class="col-lg-5 mt-2">
+											<div class="form-group has-success mg-b-0">
+                                                <label class="form-label">  رابط اللوكيشن  </label>
+												<input type="text"  v-model='fram'  name='plan'  class="form-control form-control-lg"  >
+                                                <span> (ضع رابط الخريطه واضغط معالجه يجب ان تظهر الخريطه اسفل الصفحه) </span>
+											</div>
+										</div>
+                                        <div class="col-lg-1">
+                                            <button type="button" @click="convert" class="btn mt-4 btn-info mb-0">  معالجه </button>
+                                        </div>
 									</div>
 
 							</div>
@@ -265,9 +255,11 @@
 					</div>
 
                     </div>
-                            <button type="submit"  class="btn btn-primary mt-3 mb-0">  تعديل</button>
+                            <button type="submit"  class="btn btn-primary mt-3 mb-5">  تعديل</button>
                     </div>
                     </form>
+         <iframe :src='link' width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     </div>
             <!-- row closed -->
 
@@ -297,8 +289,26 @@
     <script src="{{URL::asset('assets/js/select2.js')}}"></script>
     <!--Internal Sumoselect js-->
     <script src="{{URL::asset('assets/plugins/sumoselect/jquery.sumoselect.js')}}"></script>
-
+    @include('vue')
     <script>
+
+         content = new Vue({
+            'el': '#projectbuild',
+            data: {
+                fram:'',
+                link:'{!! $project->plan !!}'
+            },
+            methods: {
+                convert:function(){
+                    var mylocation = this.fram
+                    var myArray = mylocation.split(" ");
+                    fram = myArray[1].split('"');
+                    this.fram = fram[1]
+                    this.link = fram[1]
+                }
+            }
+        });
+
     $(document).ready(function () {
         $('select[name="region_id"]').on('change', function () {
             var region_id = $(this).val();

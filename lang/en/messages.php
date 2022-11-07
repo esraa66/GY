@@ -75,6 +75,15 @@ return [
     'Name_ar' => 'Submit Comment',
     'Name_fr' => 'Submit Comment',
     'Name_en' => 'Submit Comment',
+    'Read More' => 'Read More',
+    'Please giv a messages' => 'Please giv a messages',
+    'pleas try again' => 'pleas try again',
+    'your message send success' => 'your message send success',
+    'Ready to get started?' => 'Ready to get started?',
+    'beds' => 'beds',
+    'Baths' => 'Baths',
+    'sq ft' => 'sq ft',
+
 
 
 ];
