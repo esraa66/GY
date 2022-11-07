@@ -15,7 +15,7 @@
   'Central Heating ' => 'Central Heating ',
   'Laundry Room' => 'Laundry Room',
   'Gym' => ' Gym',
-  'Alarm' => 'Alarm',
+  'Alarm' => 'تنبيه',
   'Window Covering' => 'Window Covering',
   'WiFi' => 'WiFi',
   'TV Cable' => 'TV Cable',
@@ -36,7 +36,7 @@
   'Latest News' => 'Latest News',
   'The latest news form real estate.' => 'The latest news form real estate.',
   'Read mores...' => 'Read mores...',
-    'Our Partners' => ' شركائنا ',
+  'Our Partners' => ' شركائنا ',
   'The Companies That Represent Us.' => 'The Companies That Represent Us.',
   'Navigation' => 'Navigation',
   'Twitter Feeds' => 'Twitter Feeds',
@@ -65,4 +65,3 @@
   'Name_fr' => 'Submit Comment',
   'Name_en' => 'Submit Comment',
 );
-

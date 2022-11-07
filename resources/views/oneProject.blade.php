@@ -118,7 +118,7 @@
                                     <span class="det">7</span>
                                 </li>
                                 <li>
-                                    <span class="font-weight-bold mr-1">Bath:</span>
+                                    <span class="font-weight-bold mr-1">{{ __('messages.Baths') }}: {{ $project->bath }}</span>
                                     <span class="det">4</span>
                                 </li>
                                 <li>
@@ -251,7 +251,7 @@
                                         </div>
                                         <div class="button-effect">
                                             <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
-                                            <a href="{{ $pro->vedio->link }}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            <a href="{{ $pro->vedio_link }}" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                             <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
                                         </div>
                                     </div>
